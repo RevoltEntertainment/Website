@@ -1,16 +1,387 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Game Support</title>
-  <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revolt Entertainment | Georgian Game Development Studio</title>
+    <meta name="description" content="Revolt Entertainment is a game development studio based in Tbilisi, Georgia, creators of The Seven Enchantments.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-color: #050505;
+            --text-color: #e0e0e0;
+            --accent-color: #8a1c1c; /* Blood Red for Horror Theme */
+            --secondary-bg: #121212;
+            --font-heading: 'Cinzel', serif;
+            --font-body: 'Lato', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background-color: rgba(5, 5, 5, 0.95);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #333;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        header {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1518558997970-4ddc236affcd?q=80&w=2070&auto=format&fit=crop'); /* Placeholder forest image */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        header h1 {
+            font-family: var(--font-heading);
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            animation: fadeIn 2s ease-in;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: #aaa;
+            max-width: 600px;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: 2px solid var(--accent-color);
+            background: transparent;
+            color: var(--text-color);
+            font-family: var(--font-heading);
+            font-weight: 700;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.3s;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            background: var(--accent-color);
+            box-shadow: 0 0 15px var(--accent-color);
+        }
+
+        /* About Section */
+        #about {
+            padding: 80px 10%;
+            background-color: var(--secondary-bg);
+            text-align: center;
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: var(--text-color);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50%;
+            height: 3px;
+            background-color: var(--accent-color);
+            margin: 10px auto 0;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-content p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: #ccc;
+        }
+
+        /* Games Section */
+        #games {
+            padding: 80px 10%;
+            background-color: var(--bg-color);
+        }
+
+        .game-card {
+            display: flex;
+            flex-wrap: wrap;
+            background-color: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-top: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .game-image {
+            flex: 1 1 400px;
+            background: url('https://images.unsplash.com/photo-1509248961158-e54f6934749c?q=80&w=2037&auto=format&fit=crop'); /* Placeholder spooky village */
+            background-size: cover;
+            background-position: center;
+            min-height: 300px;
+        }
+
+        .game-info {
+            flex: 1 1 400px;
+            padding: 40px;
+        }
+
+        .game-info h3 {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--accent-color);
+        }
+
+        .game-info p {
+            margin-bottom: 20px;
+            color: #bbb;
+        }
+
+        .tags span {
+            display: inline-block;
+            background: #333;
+            padding: 5px 10px;
+            font-size: 0.8rem;
+            margin-right: 5px;
+            margin-bottom: 15px;
+            border-radius: 3px;
+        }
+
+        .platform-icons {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            display: flex;
+            gap: 15px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #000;
+            padding: 40px;
+            text-align: center;
+            border-top: 1px solid #222;
+        }
+
+        .social-links {
+            margin-bottom: 20px;
+        }
+
+        .social-links a {
+            font-size: 1.5rem;
+            margin: 0 15px;
+            color: #888;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                right: 0;
+                background-color: var(--secondary-bg);
+                width: 100%;
+                text-align: center;
+                padding: 20px 0;
+                border-bottom: 1px solid #333;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+            
+            .game-card {
+                flex-direction: column;
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </head>
 <body>
-  <h1>Support for [Your Game]</h1>
-  <p>If you need help, contact us at: <a href="mailto:yourgame.support@gmail.com">yourgame.support@gmail.com</a></p>
-  <h2>FAQ</h2>
-  <ul>
-    <li>Issue 1 – Solution</li>
-    <li>Issue 2 – Solution</li>
-  </ul>
+
+    <nav>
+        <div class="logo">Revolt <span>Entertainment</span></div>
+        <div class="menu-toggle" id="mobile-menu">
+            <i class="fas fa-bars"></i>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">Studio</a></li>
+            <li><a href="#games">Games</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header id="home">
+        <h1>Uncover the Darkness</h1>
+        <p>Georgian Game Development Studio creating atmospheric folk horror experiences.</p>
+        <a href="#games" class="btn">View Games</a>
+    </header>
+
+    <section id="about">
+        <h2 class="section-title">Who We Are</h2>
+        <div class="about-content">
+            <p>Based in <strong>Tbilisi, Georgia</strong>, Revolt Entertainment is a passionate team of developers, artists, and storytellers dedicated to crafting immersive gaming experiences.</p>
+            <p>We specialize in psychological horror and narrative-driven games, drawing heavy inspiration from Eastern European folklore and history. Our mission is to push the boundaries of atmospheric storytelling, dragging players into worlds where every shadow holds a secret.</p>
+        </div>
+    </section>
+
+    <section id="games">
+        <h2 class="section-title" style="text-align: center;">Our Projects</h2>
+        
+        <div class="game-card">
+            <div class="game-image"></div>
+            <div class="game-info">
+                <h3>The Seven Enchantments</h3>
+                <div class="tags">
+                    <span>Folk Horror</span>
+                    <span>First Person</span>
+                    <span>Atmospheric</span>
+                </div>
+                <p>
+                    A first-person psychological horror game set in the cursed 19th-century village of Pradonin. You are Józef, a fraudulent exorcist sent to help, only to realize something real and terrifying awaits.
+                </p>
+                <p>
+                    Investigate the seven deadly sins by day and survive the forest spirits that hunt you at night. The Leshy is watching.
+                </p>
+                <div class="platform-icons">
+                    <i class="fab fa-steam"></i>
+                    <i class="fab fa-windows"></i>
+                </div>
+                <a href="https://store.steampowered.com/app/3612720/The_Seven_Enchantments/" target="_blank" class="btn">View on Steam</a>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="social-links">
+            <a href="https://www.facebook.com/RevoltEntertainment/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://discord.gg/W2vdbyZr7R" target="_blank" aria-label="Discord"><i class="fab fa-discord"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+        <p>Revolt Entertainment &copy; 2025. All Rights Reserved.</p>
+        <p style="margin-top: 10px; font-size: 0.8rem; opacity: 0.7;">Tbilisi, Georgia</p>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            addEventListener('click', function (e) {
+                if(this.getAttribute('href').startsWith('#')){
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
