@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Seven Enchantments | Revolt Entertainment</title>
+    
+    <link rel="icon" type="image/png" href="images/aBRcFxAs_400x400.png">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-color: #050505;
+            --text-color: #e0e0e0;
+            --accent-color: #8a1c1c; 
+            --secondary-bg: #0d0d0d;
+            --font-main: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            --nav-height: 70px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { background-color: var(--bg-color); color: var(--text-color); font-family: var(--font-main); line-height: 1.6; overflow-x: hidden; }
+
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .reveal { opacity: 0; transform: translateY(20px); transition: 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 0 5%; background: rgba(5, 5, 5, 0.98); position: fixed; width: 100%; height: var(--nav-height); top: 0; z-index: 1000; border-bottom: 1px solid #222; }
+        .logo { font-size: 1.2rem; font-weight: 700; text-transform: uppercase; display: flex; align-items: center; gap: 10px; cursor: pointer; text-decoration: none; color: white; }
+        .logo img { height: 30px; border-radius: 4px; }
+        .logo span { color: var(--accent-color); }
+
+        .game-hero {
+            height: 75vh;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(5,5,5,1)), url('images/Key Visual 1920x1080.png');
+            background-size: cover; background-position: center;
+            display: flex; flex-direction: column; justify-content: flex-end; align-items: center; text-align: center; padding-bottom: 50px;
+        }
+        .game-hero h1 { font-size: clamp(2rem, 8vw, 4.5rem); font-weight: 900; letter-spacing: -1px; text-transform: uppercase; }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 60px 20px; }
+        .lore-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 20px; }
+        .lore-section h2 { color: var(--accent-color); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 3px; margin-bottom: 10px; }
+        .lore-section h3 { font-size: 2.2rem; margin-bottom: 20px; line-height: 1.1; font-weight: 800; }
+        .lore-section p { color: #aaa; margin-bottom: 20px; font-size: 1.05rem; }
+
+        .video-section { background: var(--secondary-bg); padding: 80px 20px; text-align: center; }
+        .video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 40px; }
+        .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border: 1px solid #333; border-radius: 4px; }
+        .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+        
+        .features-list { margin-top: 40px; border-left: 2px solid var(--accent-color); padding-left: 30px; }
+        .feature-item { margin-bottom: 35px; }
+        .feature-item strong { color: #fff; display: block; font-size: 1.25rem; margin-bottom: 8px; font-weight: 700; }
+
+        .btn-group { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 50px; }
+        .btn { padding: 16px 32px; border: 2px solid var(--accent-color); text-decoration: none; color: white; font-weight: bold; text-transform: uppercase; transition: 0.3s; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 10px; }
+        .btn:hover { background: var(--accent-color); transform: scale(1.05); }
+
+        footer { background: #000; padding: 40px 20px; text-align: center; border-top: 1px solid #111; font-size: 0.8rem; color: #444; }
+
+        @media (max-width: 850px) {
+            .lore-grid { grid-template-columns: 1fr; gap: 40px; }
+            .game-hero { height: 60vh; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">
+            <img src="images/aBRcFxAs_400x400.png" alt="Revolt">
+            Revolt <span>Entertainment</span>
+        </a>
+        <div style="display: flex; gap: 20px;">
+            <a href="index.html" style="color: #888; text-decoration: none; font-size: 0.8rem; font-weight: 700; text-transform: uppercase;">Back</a>
+        </div>
+    </nav>
+
+    <div class="game-hero">
+        <h1 class="reveal active">The Seven Enchantments</h1>
+    </div>
+
+    <div class="container">
+        <div class="lore-grid">
+            <div class="lore-section reveal">
+                <h2>Deep New Story</h2>
+                <h3>A Familiar Unfamiliarity</h3>
+                <p>The seven deadly sins, some revel in them and some suffer in them, but in the end, they meet a similar fate. Access of something will change, twist, and curse them all.</p>
+                <p>Uncover the stories of the main characters of Pradonin and their relationships with each other, the village, and what lurks within. Who is behind all this, and why? Or is the village even abandoned? As you look into the shadows, some of them might look back.</p>
+            </div>
+            <div class="lore-section reveal">
+                <h2>Investigation</h2>
+                <h3>Characters & Secrets</h3>
+                <p><strong>Discover the characters:</strong> Seven characters, seven stories, look for the clues and learn of it all. What you learn may not be what you envisioned, but Józef needs to get to the bottom of it all.</p>
+                <p><strong>Discover the secrets:</strong> Under a rock or behind a tree, one can see a story in a lot of places, but are you ready to see how the story ends?</p>
+            </div>
+        </div>
+    </div>
+
+    <section class="video-section">
+        <div class="container">
+            <h2 style="text-transform: uppercase; letter-spacing: 2px; color: var(--accent-color); font-size: 0.8rem;">Official Trailers</h2>
+            <div class="video-grid">
+                <div class="reveal">
+                    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/Ei02vnSpvjs" frameborder="0" allowfullscreen></iframe></div>
+                    <p style="margin-top:15px; font-weight: bold;">Launch Trailer</p>
+                </div>
+                <div class="reveal">
+                    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/nhceq4Z2VOs" frameborder="0" allowfullscreen></iframe></div>
+                    <p style="margin-top:15px; font-weight: bold;">Gameplay Trailer</p>
+                </div>
+                <div class="reveal">
+                    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/w_VbZcALNa8" frameborder="0" allowfullscreen></iframe></div>
+                    <p style="margin-top:15px; font-weight: bold;">Reveal Trailer</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="lore-section reveal">
+            <h2>Gameplay & Features</h2>
+            <h3>Atmospheric Folk Horror</h3>
+            <div class="features-list">
+                <div class="feature-item">
+                    <strong>Explore Pradonin</strong>
+                    <p>Navigate dense forests, forgotten chapels, and decaying huts, each connected to a different character's sin in a richly detailed Unreal Engine 5 world.</p>
+                </div>
+                <div class="feature-item">
+                    <strong>Day/Night Cycle</strong>
+                    <p>Day: Gather candles, ritual tools, and stealth aids. Night: Survive the hunt. The Leshy roams. Sound and light are your enemies—or your only hope.</p>
+                </div>
+                <div class="feature-item">
+                    <strong>3D Audio Experience</strong>
+                    <p>Built for immersion. Headphones are recommended—the Leshy hears everything. Find journal entries and cursed relics to uncover the downfall.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="btn-group reveal">
+            <a href="https://store.steampowered.com/app/3612720/" target="_blank" class="btn"><i class="fab fa-steam"></i> Steam Store</a>
+            <a href="https://store.epicgames.com/en-US/p/the-seven-enchantments-374db8" target="_blank" class="btn"><i class="fas fa-bolt"></i> Epic Games</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 REVOLT ENTERTAINMENT | TBILISI, GEORGIA</p>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
