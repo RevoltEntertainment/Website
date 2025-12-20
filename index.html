@@ -337,11 +337,38 @@
         </div>
     </section>
 
-    <section id="academy-promo" class="reveal" style="background: linear-gradient(rgba(138, 28, 28, 0.1), rgba(5, 5, 5, 1)); border-top: 1px solid #222;">
-    <div class="container" style="text-align: center; max-width: 800px; margin: 0 auto;">
-        <h2 class="section-title">Revolt Academy</h2>
-        <p style="color: #aaa; margin-bottom: 30px;">Want to build worlds like ours? Join our specialized courses in Tbilisi and learn Unreal Engine 5, 3D Design, and Animation from the team behind The Seven Enchantments.</p>
-        <a href="academy.html" class="btn btn-main">Explore Courses</a>
+    <section id="academy-promo" class="reveal" style="
+    position: relative; 
+    padding: 120px 5%; 
+    background: linear-gradient(rgba(5, 5, 5, 0.85), rgba(5, 5, 5, 0.95)), url('images/academy-bg.jpg'); 
+    background-size: cover; 
+    background-position: center; 
+    background-attachment: fixed;
+    border-top: 1px solid #222; 
+    border-bottom: 1px solid #222;
+    text-align: center;">
+    
+    <div style="max-width: 800px; margin: 0 auto; position: relative; z-index: 2;">
+        <h2 class="section-title" style="margin-bottom: 20px;">Revolt Academy</h2>
+        <p style="color: #ccc; font-size: 1.1rem; margin-bottom: 35px; line-height: 1.8;">
+            The next generation of Georgian game developers starts here. Learn the industry-standard workflows used to create <strong>The Seven Enchantments</strong>. From Unreal Engine 5 mastery to high-fidelity 3D modeling, we bridge the gap between learning and professional development.
+        </p>
+        <a href="academy.html" class="btn btn-main" style="padding: 18px 40px; font-size: 1rem;">
+            Explore Courses & Enroll
+        </a>
+    </div>
+
+    <div style="
+        position: absolute; 
+        top: 50%; 
+        left: 50%; 
+        transform: translate(-50%, -50%); 
+        width: 300px; 
+        height: 300px; 
+        background: var(--accent-color); 
+        filter: blur(150px); 
+        opacity: 0.15; 
+        z-index: 1;">
     </div>
 </section>
 
