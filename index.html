@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Revolt Entertainment | Georgian Game Development Studio</title>
     
+    <link rel="icon" type="image/png" href="images/aBRcFxAs_400x400.png">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -71,6 +73,15 @@
             font-weight: 700;
             letter-spacing: -0.5px;
             text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            height: 30px;
+            width: 30px;
+            border-radius: 4px;
         }
 
         .logo span { color: var(--accent-color); }
@@ -79,10 +90,9 @@
         .nav-links a { text-decoration: none; color: #888; font-size: 0.9rem; text-transform: uppercase; transition: 0.3s; }
         .nav-links a:hover { color: var(--accent-color); }
 
-        /* --- HERO (USING YOUR IMAGE) --- */
+        /* --- HERO --- */
         header {
             height: 100vh;
-            /* Added path to your Key Visual */
             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.9)), url('images/Key Visual 1920x1080.png');
             background-size: cover;
             background-position: center;
@@ -114,8 +124,10 @@
 
         /* --- BUTTONS --- */
         .btn {
-            display: inline-block;
-            padding: 14px 34px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
             border: 2px solid var(--accent-color);
             background: transparent;
             color: var(--text-color);
@@ -124,9 +136,8 @@
             cursor: pointer;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             letter-spacing: 1px;
-            animation: fadeInUp 1s ease forwards 0.6s;
-            opacity: 0;
-            animation-fill-mode: forwards;
+            font-size: 0.85rem;
+            text-decoration: none;
         }
 
         .btn:hover {
@@ -135,13 +146,20 @@
             box-shadow: 0 0 20px rgba(138, 28, 28, 0.4);
         }
 
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
         /* --- SECTIONS --- */
         section { padding: 100px 10%; }
         .section-title { font-size: 2.5rem; font-weight: 800; margin-bottom: 40px; text-align: center; width: 100%; letter-spacing: -1px; }
         #about { background-color: var(--secondary-bg); }
         .about-content { max-width: 750px; margin: 0 auto; text-align: center; font-size: 1.1rem; color: #bbb; }
 
-        /* --- GAME CARDS (USING YOUR IMAGE) --- */
+        /* --- GAME CARDS --- */
         .game-card {
             display: flex;
             flex-wrap: wrap;
@@ -160,16 +178,16 @@
 
         .game-image {
             flex: 1 1 450px;
-            /* Added path to your Key Visual */
             background: url('images/Key Visual 1920x1080.png');
             background-size: cover;
             background-position: center;
-            min-height: 350px;
+            min-height: 400px;
         }
 
         .game-info { flex: 1 1 400px; padding: 50px; }
-        .game-info h3 { font-size: 2rem; margin-bottom: 15px; color: #fff; }
+        .game-info h3 { font-size: 2.2rem; margin-bottom: 15px; color: #fff; font-weight: 800; }
 
+        .tags { margin-bottom: 20px; }
         .tags span {
             background: #222;
             padding: 4px 12px;
@@ -189,20 +207,24 @@
 
         /* --- FOOTER --- */
         footer { background-color: #000; padding: 60px 20px; text-align: center; border-top: 1px solid #111; }
-        .social-links a { font-size: 1.4rem; margin: 0 15px; color: #555; transition: 0.3s; }
-        .social-links a:hover { color: #fff; transform: translateY(-3px); display: inline-block; }
+        .social-links a { font-size: 1.4rem; margin: 0 15px; color: #555; transition: 0.3s; display: inline-block; }
+        .social-links a:hover { color: #fff; transform: translateY(-3px); }
 
         @media (max-width: 768px) {
             header h1 { font-size: 2.8rem; }
             .nav-links { display: none; }
             .game-card { flex-direction: column; }
+            .btn-group { justify-content: center; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo">Revolt <span>Entertainment</span></div>
+        <div class="logo">
+            <img src="images/aBRcFxAs_400x400.png" alt="Revolt Icon">
+            Revolt <span>Entertainment</span>
+        </div>
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#about">Studio</a></li>
@@ -214,7 +236,7 @@
     <header id="home">
         <h1>UNCOVER THE DARKNESS</h1>
         <p>A premium Georgian game development studio crafting high-atmosphere horror experiences.</p>
-        <a href="#games" class="btn">Explore Projects</a>
+        <a href="#games" class="btn" style="opacity: 1; animation: fadeInUp 1s ease forwards 0.6s;">Explore Projects</a>
     </header>
 
     <section id="about" class="reveal">
@@ -229,12 +251,18 @@
         <div class="game-card">
             <div class="game-image"></div>
             <div class="game-info">
-                <div class="tags"><span>Folk Horror</span><span>Surreal</span></div>
-                <br>
+                <div class="tags"><span>Folk Horror</span><span>Atmospheric</span><span>Survival</span></div>
                 <h3>The Seven Enchantments</h3>
                 <p>Journey into the cursed 19th-century village of Pradonin. A narrative-driven horror experience where survival depends on your wits and the shadows you keep.</p>
-                <br>
-                <a href="https://store.steampowered.com/app/3612720/" target="_blank" class="btn" style="animation: none; opacity: 1;">Steam Store</a>
+                
+                <div class="btn-group">
+                    <a href="https://store.steampowered.com/app/3612720/" target="_blank" class="btn">
+                        <i class="fab fa-steam"></i> Steam Store
+                    </a>
+                    <a href="https://store.epicgames.com/en-US/p/the-seven-enchantments-374db8" target="_blank" class="btn">
+                        <i class="fas fa-bolt"></i> Epic Store
+                    </a>
+                </div>
             </div>
         </div>
     </section>
