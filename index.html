@@ -41,8 +41,10 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 99999; /* Highest priority */
-            transition: opacity 0.6s ease, visibility 0.6s;
+            z-index: 99999;
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 1s ease, visibility 1s ease; /* Slower fade exit */
         }
 
         #preloader.fade-out {
@@ -162,7 +164,6 @@
             z-index: 1001;
         }
 
-        /* --- HERO --- */
         header {
             height: 100vh;
             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.9)), url('images/Key Visual 1920x1080.png');
@@ -195,7 +196,6 @@
             animation-fill-mode: forwards;
         }
 
-        /* --- BUTTONS --- */
         .btn {
             display: inline-flex;
             align-items: center;
@@ -221,7 +221,6 @@
         .btn-main { background: var(--accent-color); }
         .btn-group { display: flex; gap: 15px; flex-wrap: wrap; margin-top: 20px; }
 
-        /* --- SECTIONS --- */
         section { padding: 80px 5%; }
         .section-title { 
             font-size: clamp(1.8rem, 5vw, 2.5rem); 
@@ -234,7 +233,6 @@
         #about { background-color: var(--secondary-bg); }
         .about-content { max-width: 750px; margin: 0 auto; text-align: center; font-size: 1.05rem; color: #bbb; }
 
-        /* --- GAME CARDS --- */
         .game-card {
             display: flex;
             flex-direction: row;
@@ -266,7 +264,6 @@
             color: #888;
         }
 
-        /* --- SUPPORT FORM --- */
         #contact { background-color: var(--secondary-bg); }
         .contact-container { max-width: 600px; margin: 0 auto; }
         .form-control { width: 100%; padding: 15px; background-color: var(--input-bg); border: 1px solid #222; color: #fff; font-family: var(--font-main); margin-top: 8px; transition: 0.3s; outline: none; border-radius: 4px; }
@@ -395,18 +392,17 @@
     </footer>
 
     <script>
-        // Preloader Logic
-        function hidePreloader() {
+        // Preloader Logic with Forced Minimum Delay (2 Seconds)
+        window.addEventListener('load', function() {
             const preloader = document.getElementById('preloader');
-            if (preloader) {
-                preloader.classList.add('fade-out');
-            }
-        }
-        
-        // Hide when loaded
-        window.addEventListener('load', hidePreloader);
-        // Fail-safe: Hide after 3 seconds anyway
-        setTimeout(hidePreloader, 3000);
+            
+            // Force the loader to stay for exactly 2 seconds before fading out
+            setTimeout(() => {
+                if (preloader) {
+                    preloader.classList.add('fade-out');
+                }
+            }, 2000); 
+        });
 
         // Mobile Menu Logic
         const menuToggle = document.getElementById('menu-toggle');
