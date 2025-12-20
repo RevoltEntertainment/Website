@@ -6,7 +6,6 @@
     <title>Revolt Entertainment | Georgian Game Development Studio</title>
     
     <link rel="icon" type="image/png" href="images/aBRcFxAs_400x400.png">
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -20,15 +19,8 @@
             --nav-height: 70px;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
 
         body {
             background-color: var(--bg-color);
@@ -36,6 +28,73 @@
             font-family: var(--font-main);
             line-height: 1.6;
             overflow-x: hidden;
+        }
+
+        /* --- PRELOADER STYLES --- */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #050505;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 99999; /* Highest priority */
+            transition: opacity 0.6s ease, visibility 0.6s;
+        }
+
+        #preloader.fade-out {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .loader-content {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .loader-logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            animation: pulse 1.5s infinite ease-in-out;
+        }
+
+        .loader-bar {
+            width: 120px;
+            height: 2px;
+            background: #222;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .loader-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--accent-color);
+            animation: loading 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.8; }
+        }
+
+        @keyframes loading {
+            0% { left: -100%; }
+            50% { left: 0; }
+            100% { left: 100%; }
         }
 
         /* --- ANIMATIONS --- */
@@ -81,20 +140,10 @@
             z-index: 1001;
         }
 
-        .logo img {
-            height: 30px;
-            width: 30px;
-            border-radius: 4px;
-        }
-
+        .logo img { height: 30px; width: 30px; border-radius: 4px; }
         .logo span { color: var(--accent-color); }
 
-        /* Desktop Nav */
-        .nav-links {
-            display: flex;
-            gap: 30px;
-        }
-
+        .nav-links { display: flex; gap: 30px; }
         .nav-links a {
             text-decoration: none;
             color: #888;
@@ -103,10 +152,8 @@
             text-transform: uppercase;
             transition: 0.3s;
         }
-
         .nav-links a:hover { color: var(--accent-color); }
 
-        /* Mobile Menu Toggle */
         .menu-btn {
             display: none;
             font-size: 1.5rem;
@@ -171,17 +218,8 @@
             box-shadow: 0 0 20px rgba(138, 28, 28, 0.4);
         }
 
-        /* Specialized button for Detail Page */
-        .btn-main {
-            background: var(--accent-color);
-        }
-
-        .btn-group {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-            margin-top: 20px;
-        }
+        .btn-main { background: var(--accent-color); }
+        .btn-group { display: flex; gap: 15px; flex-wrap: wrap; margin-top: 20px; }
 
         /* --- SECTIONS --- */
         section { padding: 80px 5%; }
@@ -235,13 +273,11 @@
         .form-control:focus { border-color: var(--accent-color); }
         .submit-btn { width: 100%; padding: 16px; background-color: var(--accent-color); color: #fff; font-weight: 700; border: none; cursor: pointer; text-transform: uppercase; margin-top: 15px; border-radius: 4px; }
 
-        /* --- FOOTER --- */
         footer { background-color: #000; padding: 50px 20px; text-align: center; border-top: 1px solid #111; }
         .social-links { margin-bottom: 20px; }
         .social-links a { font-size: 1.4rem; margin: 0 15px; color: #555; transition: 0.3s; }
         .social-links a:hover { color: #fff; }
 
-        /* --- MOBILE MEDIA QUERIES --- */
         @media (max-width: 900px) {
             .game-card { flex-direction: column; }
             .game-image { min-height: 250px; }
@@ -249,7 +285,6 @@
 
         @media (max-width: 768px) {
             .menu-btn { display: block; }
-
             .nav-links {
                 position: fixed;
                 top: var(--nav-height);
@@ -263,116 +298,37 @@
                 transition: 0.4s;
                 border-top: 1px solid #222;
             }
-
             .nav-links.active { left: 0; }
-
-            .nav-links a {
-                font-size: 1.5rem;
-                display: block;
-                padding: 15px 0;
-            }
-
+            .nav-links a { font-size: 1.5rem; display: block; padding: 15px 0; }
             .btn-group { justify-content: center; }
             .btn { width: 100%; justify-content: center; }
-            
             section { padding: 60px 20px; }
         }
-
-
-
-
-        /* --- PRELOADER STYLES --- */
-#preloader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #050505;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999; /* Sits above everything */
-    transition: opacity 0.6s ease, visibility 0.6s;
-}
-
-.loader-content {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-}
-
-.loader-logo {
-    width: 60px;
-    height: 60px;
-    border-radius: 8px;
-    animation: pulse 1.5s infinite ease-in-out;
-}
-
-.loader-bar {
-    width: 120px;
-    height: 2px;
-    background: #222;
-    position: relative;
-    overflow: hidden;
-}
-
-.loader-bar::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: var(--accent-color);
-    animation: loading 1.5s infinite;
-}
-
-@keyframes pulse {
-    0% { transform: scale(1); opacity: 0.8; }
-    50% { transform: scale(1.1); opacity: 1; }
-    100% { transform: scale(1); opacity: 0.8; }
-}
-
-@keyframes loading {
-    0% { left: -100%; }
-    50% { left: 0; }
-    100% { left: 100%; }
-}
-
-/* Class to hide the loader */
-#preloader.fade-out {
-    opacity: 0;
-    visibility: hidden;
-}
     </style>
 </head>
 <body>
 
     <div id="preloader">
-    <div class="loader-content">
-        <img src="images/aBRcFxAs_400x400.png" alt="Revolt Logo" class="loader-logo">
-        <div class="loader-bar"></div>
+        <div class="loader-content">
+            <img src="images/aBRcFxAs_400x400.png" alt="Revolt Logo" class="loader-logo">
+            <div class="loader-bar"></div>
+        </div>
     </div>
-</div>
 
     <nav>
         <div class="logo">
             <img src="images/aBRcFxAs_400x400.png" alt="Revolt Icon">
             Revolt <span>Entertainment</span>
         </div>
-        
         <div class="menu-btn" id="menu-toggle">
             <i class="fas fa-bars"></i>
         </div>
-
-      <ul class="nav-links" id="nav-menu">
-    <li><a href="#home">Home</a></li>
-    <li><a href="academy.html">Academy</a></li> <li><a href="#games">Games</a></li>
-    <li><a href="#contact">Support</a></li>
-</ul>
+        <ul class="nav-links" id="nav-menu">
+            <li><a href="#home">Home</a></li>
+            <li><a href="academy.html">Academy</a></li>
+            <li><a href="#games">Games</a></li>
+            <li><a href="#contact">Support</a></li>
+        </ul>
     </nav>
 
     <header id="home">
@@ -396,75 +352,35 @@
                 <div class="tags"><span>Folk Horror</span><span>Unreal Engine 5</span><span>Survival</span></div>
                 <h3>The Seven Enchantments</h3>
                 <p>Journey into the cursed 19th-century village of Pradonin. A narrative-driven horror experience where survival depends on your wits and the secrets you uncover.</p>
-                
                 <div class="btn-group">
-                    <a href="tse.html" class="btn btn-main">
-                        <i class="fas fa-eye"></i> View Game Details
+                    <a href="tse.html" class="btn btn-main"><i class="fas fa-eye"></i> View Game Details</a>
+                    <a href="https://store.steampowered.com/app/3612720/" target="_blank" class="btn"><i class="fab fa-steam"></i></a>
+                    <a href="https://store.epicgames.com/en-US/p/the-seven-enchantments-374db8" target="_blank" class="btn">
+                        <img src="images/Epic_games_store_logo.png" alt="Epic Games Store" style="width: 20px; height: auto;">
                     </a>
-                    
-                    <a href="https://store.steampowered.com/app/3612720/" target="_blank" class="btn">
-                        <i class="fab fa-steam"></i>
-                    </a>
-                  <a href="https://store.epicgames.com/en-US/p/the-seven-enchantments-374db8" target="_blank" class="btn">
-    <img src="images/Epic_games_store_logo.png" alt="Epic Games Store" style="width: 20px; height: auto;">
-   
-</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="academy-promo" class="reveal" style="
-    position: relative; 
-    padding: 120px 5%; 
-    background: linear-gradient(rgba(5, 5, 5, 0.85), rgba(5, 5, 5, 0.95)), url('images/academy-bg.jpg'); 
-    background-size: cover; 
-    background-position: center; 
-    background-attachment: fixed;
-    border-top: 1px solid #222; 
-    border-bottom: 1px solid #222;
-    text-align: center;">
-    
-    <div style="max-width: 800px; margin: 0 auto; position: relative; z-index: 2;">
-        <h2 class="section-title" style="margin-bottom: 20px;">Revolt Academy</h2>
-        <p style="color: #ccc; font-size: 1.1rem; margin-bottom: 35px; line-height: 1.8;">
-            The next generation of Georgian game developers starts here. Learn the industry-standard workflows used to create <strong>The Seven Enchantments</strong>. From Unreal Engine 5 mastery to high-fidelity 3D modeling, we bridge the gap between learning and professional development.
-        </p>
-        <a href="academy.html" class="btn btn-main" style="padding: 18px 40px; font-size: 1rem;">
-            Explore Courses & Enroll
-        </a>
-    </div>
-
-    <div style="
-        position: absolute; 
-        top: 50%; 
-        left: 50%; 
-        transform: translate(-50%, -50%); 
-        width: 300px; 
-        height: 300px; 
-        background: var(--accent-color); 
-        filter: blur(150px); 
-        opacity: 0.15; 
-        z-index: 1;">
-    </div>
-</section>
+    <section id="academy-promo" class="reveal" style="position: relative; padding: 120px 5%; background: linear-gradient(rgba(5, 5, 5, 0.85), rgba(5, 5, 5, 0.95)), url('images/academy-bg.jpg'); background-size: cover; background-position: center; background-attachment: fixed; border-top: 1px solid #222; border-bottom: 1px solid #222; text-align: center;">
+        <div style="max-width: 800px; margin: 0 auto; position: relative; z-index: 2;">
+            <h2 class="section-title" style="margin-bottom: 20px;">Revolt Academy</h2>
+            <p style="color: #ccc; font-size: 1.1rem; margin-bottom: 35px; line-height: 1.8;">
+                The next generation of Georgian game developers starts here. Learn the industry-standard workflows used to create <strong>The Seven Enchantments</strong>.
+            </p>
+            <a href="academy.html" class="btn btn-main" style="padding: 18px 40px; font-size: 1rem;">Explore Courses & Enroll</a>
+        </div>
+        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 300px; height: 300px; background: var(--accent-color); filter: blur(150px); opacity: 0.15; z-index: 1;"></div>
+    </section>
 
     <section id="contact" class="reveal">
         <h2 class="section-title">Support</h2>
         <div class="contact-container">
             <form action="https://formspree.io/f/xkowjegg" method="POST">
-                <div>
-                    <label style="font-size: 0.8rem; color: #777;">Full Name</label>
-                    <input type="text" name="name" class="form-control" required>
-                </div>
-                <div style="margin-top: 15px;">
-                    <label style="font-size: 0.8rem; color: #777;">Email Address</label>
-                    <input type="email" name="email" class="form-control" required>
-                </div>
-                <div style="margin-top: 15px;">
-                    <label style="font-size: 0.8rem; color: #777;">Message</label>
-                    <textarea name="message" class="form-control" rows="5" required></textarea>
-                </div>
+                <div><label style="font-size: 0.8rem; color: #777;">Full Name</label><input type="text" name="name" class="form-control" required></div>
+                <div style="margin-top: 15px;"><label style="font-size: 0.8rem; color: #777;">Email Address</label><input type="email" name="email" class="form-control" required></div>
+                <div style="margin-top: 15px;"><label style="font-size: 0.8rem; color: #777;">Message</label><textarea name="message" class="form-control" rows="5" required></textarea></div>
                 <button type="submit" class="submit-btn">Submit Ticket</button>
             </form>
         </div>
@@ -479,6 +395,19 @@
     </footer>
 
     <script>
+        // Preloader Logic
+        function hidePreloader() {
+            const preloader = document.getElementById('preloader');
+            if (preloader) {
+                preloader.classList.add('fade-out');
+            }
+        }
+        
+        // Hide when loaded
+        window.addEventListener('load', hidePreloader);
+        // Fail-safe: Hide after 3 seconds anyway
+        setTimeout(hidePreloader, 3000);
+
         // Mobile Menu Logic
         const menuToggle = document.getElementById('menu-toggle');
         const navMenu = document.getElementById('nav-menu');
@@ -499,26 +428,14 @@
         });
 
         // Scroll Reveal
-        const observerOptions = { threshold: 0.1 };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('active');
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.1 });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-        <script>
-    window.addEventListener('load', function() {
-        const preloader = document.getElementById('preloader');
-        
-        // Slight delay for a smoother visual transition
-        setTimeout(() => {
-            preloader.classList.add('fade-out');
-        }, 800); 
-    });
-</script>
     </script>
 </body>
 </html>
