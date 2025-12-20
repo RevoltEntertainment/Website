@@ -18,6 +18,7 @@
             --text-color: #e0e0e0;
             --accent-color: #8a1c1c; /* Blood Red for Horror Theme */
             --secondary-bg: #121212;
+            --input-bg: #1e1e1e;
             --font-heading: 'Cinzel', serif;
             --font-body: 'Lato', sans-serif;
         }
@@ -90,7 +91,7 @@
         /* Hero Section */
         header {
             height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1518558997970-4ddc236affcd?q=80&w=2070&auto=format&fit=crop'); /* Placeholder forest image */
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1518558997970-4ddc236affcd?q=80&w=2070&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -99,6 +100,7 @@
             align-items: center;
             text-align: center;
             padding: 0 20px;
+            margin-top: 0;
         }
 
         header h1 {
@@ -135,11 +137,9 @@
             box-shadow: 0 0 15px var(--accent-color);
         }
 
-        /* About Section */
-        #about {
+        /* Common Section Styles */
+        section {
             padding: 80px 10%;
-            background-color: var(--secondary-bg);
-            text-align: center;
         }
 
         .section-title {
@@ -149,15 +149,23 @@
             color: var(--text-color);
             position: relative;
             display: inline-block;
+            text-align: center;
+            width: 100%;
         }
 
         .section-title::after {
             content: '';
             display: block;
-            width: 50%;
+            width: 100px;
             height: 3px;
             background-color: var(--accent-color);
             margin: 10px auto 0;
+        }
+
+        /* About Section */
+        #about {
+            background-color: var(--secondary-bg);
+            text-align: center;
         }
 
         .about-content {
@@ -173,7 +181,6 @@
 
         /* Games Section */
         #games {
-            padding: 80px 10%;
             background-color: var(--bg-color);
         }
 
@@ -190,7 +197,7 @@
 
         .game-image {
             flex: 1 1 400px;
-            background: url('https://images.unsplash.com/photo-1509248961158-e54f6934749c?q=80&w=2037&auto=format&fit=crop'); /* Placeholder spooky village */
+            background: url('https://images.unsplash.com/photo-1509248961158-e54f6934749c?q=80&w=2037&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
             min-height: 300px;
@@ -208,11 +215,6 @@
             color: var(--accent-color);
         }
 
-        .game-info p {
-            margin-bottom: 20px;
-            color: #bbb;
-        }
-
         .tags span {
             display: inline-block;
             background: #333;
@@ -228,6 +230,69 @@
             margin-bottom: 20px;
             display: flex;
             gap: 15px;
+        }
+
+        /* Contact / Support Section */
+        #contact {
+            background-color: var(--secondary-bg);
+            border-top: 1px solid #222;
+        }
+
+        .contact-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-family: var(--font-heading);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--input-bg);
+            border: 1px solid #333;
+            color: #fff;
+            font-family: var(--font-body);
+            border-radius: 4px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .form-control:focus {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 5px rgba(138, 28, 28, 0.5);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background-color: var(--accent-color);
+            color: #fff;
+            font-family: var(--font-heading);
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #6b1515;
         }
 
         /* Footer */
@@ -259,34 +324,11 @@
 
         /* Responsive */
         @media (max-width: 768px) {
-            header h1 {
-                font-size: 2.5rem;
-            }
-
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 70px;
-                right: 0;
-                background-color: var(--secondary-bg);
-                width: 100%;
-                text-align: center;
-                padding: 20px 0;
-                border-bottom: 1px solid #333;
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .menu-toggle {
-                display: block;
-            }
-            
-            .game-card {
-                flex-direction: column;
-            }
+            header h1 { font-size: 2.5rem; }
+            .nav-links { display: none; flex-direction: column; position: absolute; top: 70px; right: 0; background-color: var(--secondary-bg); width: 100%; text-align: center; padding: 20px 0; border-bottom: 1px solid #333; }
+            .nav-links.active { display: flex; }
+            .menu-toggle { display: block; }
+            .game-card { flex-direction: column; }
         }
 
         @keyframes fadeIn {
@@ -306,7 +348,7 @@
             <li><a href="#home">Home</a></li>
             <li><a href="#about">Studio</a></li>
             <li><a href="#games">Games</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#contact">Support</a></li>
         </ul>
     </nav>
 
@@ -320,12 +362,12 @@
         <h2 class="section-title">Who We Are</h2>
         <div class="about-content">
             <p>Based in <strong>Tbilisi, Georgia</strong>, Revolt Entertainment is a passionate team of developers, artists, and storytellers dedicated to crafting immersive gaming experiences.</p>
-            <p>We specialize in psychological horror and narrative-driven games, drawing heavy inspiration from Eastern European folklore and history. Our mission is to push the boundaries of atmospheric storytelling, dragging players into worlds where every shadow holds a secret.</p>
+            <p>We specialize in psychological horror and narrative-driven games, drawing heavy inspiration from Eastern European folklore and history. Our mission is to push the boundaries of atmospheric storytelling.</p>
         </div>
     </section>
 
     <section id="games">
-        <h2 class="section-title" style="text-align: center;">Our Projects</h2>
+        <h2 class="section-title">Our Projects</h2>
         
         <div class="game-card">
             <div class="game-image"></div>
@@ -339,9 +381,6 @@
                 <p>
                     A first-person psychological horror game set in the cursed 19th-century village of Pradonin. You are Józef, a fraudulent exorcist sent to help, only to realize something real and terrifying awaits.
                 </p>
-                <p>
-                    Investigate the seven deadly sins by day and survive the forest spirits that hunt you at night. The Leshy is watching.
-                </p>
                 <div class="platform-icons">
                     <i class="fab fa-steam"></i>
                     <i class="fab fa-windows"></i>
@@ -351,19 +390,50 @@
         </div>
     </section>
 
-    <footer id="contact">
+    <section id="contact">
+        <h2 class="section-title">Customer Support</h2>
+        <p style="text-align: center; color: #888; margin-bottom: 30px;">Have questions or found a bug? Reach out to us directly.</p>
+        
+        <div class="contact-container">
+            <form action="https://formspree.io/f/xkowjegg" method="POST">
+                
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" class="form-control" required placeholder="Enter your name">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" class="form-control" required placeholder="yourname@example.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" class="form-control" required placeholder="Bug report, Feedback, etc.">
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" class="form-control" required placeholder="How can we help you?"></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
         <div class="social-links">
-            <a href="https://www.facebook.com/RevoltEntertainment/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://discord.gg/W2vdbyZr7R" target="_blank" aria-label="Discord"><i class="fab fa-discord"></i></a>
-            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/RevoltEntertainment/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://discord.gg/W2vdbyZr7R" target="_blank"><i class="fab fa-discord"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
         </div>
         <p>Revolt Entertainment &copy; 2025. All Rights Reserved.</p>
         <p style="margin-top: 10px; font-size: 0.8rem; opacity: 0.7;">Tbilisi, Georgia</p>
     </footer>
 
     <script>
-        // Mobile Menu Toggle
         const menuToggle = document.getElementById('mobile-menu');
         const navLinks = document.querySelector('.nav-links');
 
@@ -371,7 +441,6 @@
             navLinks.classList.toggle('active');
         });
 
-        // Smooth Scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             addEventListener('click', function (e) {
                 if(this.getAttribute('href').startsWith('#')){
