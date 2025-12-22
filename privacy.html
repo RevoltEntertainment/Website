@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | Revolt Entertainment</title>
+    
+    <link rel="icon" type="image/png" href="images/aBRcFxAs_400x400.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-color: #050505;
+            --text-color: #e0e0e0;
+            --accent-color: #8a1c1c; 
+            --secondary-bg: #121212;
+            --font-main: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            --nav-height: 70px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-main);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* --- PRELOADER (Same as Index) --- */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #050505;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 99999;
+            transition: opacity 1s ease, visibility 1s ease;
+        }
+
+        #preloader.fade-out { opacity: 0; visibility: hidden; pointer-events: none; }
+
+        .loader-content { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 20px; }
+        .loader-logo { width: 60px; height: 60px; border-radius: 8px; animation: pulse 1.5s infinite ease-in-out; }
+        .loader-bar { width: 120px; height: 2px; background: #222; position: relative; overflow: hidden; }
+        .loader-bar::after {
+            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+            background: var(--accent-color); animation: loading 1.5s infinite;
+        }
+
+        @keyframes pulse { 0%, 100% { transform: scale(1); opacity: 0.8; } 50% { transform: scale(1.1); opacity: 1; } }
+        @keyframes loading { 0% { left: -100%; } 50% { left: 0; } 100% { left: 100%; } }
+
+        /* --- NAVIGATION --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+            background-color: rgba(5, 5, 5, 0.98);
+            position: fixed;
+            width: 100%;
+            height: var(--nav-height);
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #222;
+        }
+
+        .logo { font-size: 1.2rem; font-weight: 700; text-transform: uppercase; display: flex; align-items: center; gap: 10px; }
+        .logo img { height: 30px; width: 30px; border-radius: 4px; }
+        .logo span { color: var(--accent-color); }
+
+        /* --- CONTENT AREA --- */
+        .policy-container {
+            max-width: 800px;
+            margin: 150px auto 100px;
+            padding: 0 20px;
+        }
+
+        h1 { font-size: 3rem; font-weight: 800; margin-bottom: 10px; color: #fff; letter-spacing: -1px; }
+        .last-updated { color: var(--accent-color); font-weight: 600; font-size: 0.9rem; margin-bottom: 50px; text-transform: uppercase; }
+        
+        h2 { font-size: 1.5rem; color: #fff; margin-top: 40px; margin-bottom: 15px; border-left: 3px solid var(--accent-color); padding-left: 15px; }
+        p { color: #aaa; margin-bottom: 20px; }
+        strong { color: #fff; }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 50px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+        .back-link:hover { color: var(--accent-color); }
+
+        /* --- FOOTER --- */
+        footer { background-color: #000; padding: 50px 20px; text-align: center; border-top: 1px solid #111; }
+        .social-links { margin-bottom: 20px; }
+        .social-links a { font-size: 1.4rem; margin: 0 15px; color: #555; transition: 0.3s; }
+        .social-links a:hover { color: #fff; }
+    </style>
+</head>
+<body>
+
+    <div id="preloader">
+        <div class="loader-content">
+            <img src="images/aBRcFxAs_400x400.png" alt="Revolt Logo" class="loader-logo">
+            <div class="loader-bar"></div>
+        </div>
+    </div>
+
+    <nav>
+        <div class="logo">
+            <img src="images/aBRcFxAs_400x400.png" alt="Revolt Icon">
+            Revolt <span>Entertainment</span>
+        </div>
+    </nav>
+
+    <div class="policy-container">
+        <h1>Privacy Policy</h1>
+        <p class="last-updated">Last Updated: December 2025</p>
+        
+        <h2>1. Data We Collect</h2>
+        <p>We use <strong>Epic Online Services</strong> to provide game functionality. We only access your <strong>Epic Account Display Name</strong> and <strong>Unique Account ID</strong> to verify your identity and save your game progress.</p>
+        
+        <h2>2. How We Use Data</h2>
+        <p>Your data is used strictly for in-game features like achievements and cloud saves. We do not sell or share your data with third parties.</p>
+        
+        <h2>3. Your Rights</h2>
+        <p>You can revoke our access to your Epic Account at any time through your Epic Games account settings.</p>
+        
+        <h2>4. Contact</h2>
+        <p>For questions, contact us at: <strong>support@revoltentertainment.com</strong></p>
+        
+        <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Home</a>
+    </div>
+
+    <footer>
+        <div class="social-links">
+            <a href="https://www.facebook.com/RevoltEntertainment/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://discord.gg/W2vdbyZr7R" target="_blank"><i class="fab fa-discord"></i></a>
+        </div>
+        <p style="font-size: 0.75rem; color: #444; letter-spacing: 1px;">REVOLT ENTERTAINMENT &copy; 2025 | TBILISI, GEORGIA</p>
+    </footer>
+
+    <script>
+        // Forced 2-second preloader to match homepage
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                document.getElementById('preloader').classList.add('fade-out');
+            }, 2000); 
+        });
+    </script>
+</body>
+</html>
