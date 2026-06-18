@@ -3,24 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Revolt Academy | Shape the Future of Gaming</title>
+    
+    <title>Revolt Academy | Game Development Courses in Tbilisi</title>
+    <meta name="description" content="Master Game Development with Revolt Academy. Professional courses in Unreal Engine 5, C++ Programming, 3D Environment Art, and Animation in Tbilisi, Georgia.">
+    <meta name="keywords" content="Game Dev Academy, Learn Unreal Engine Georgia, C++ Course Tbilisi, 3D Animation Course, Game Design School, Revolt Academy">
+    
+    <meta property="og:title" content="Revolt Academy | Shape the Future of Gaming">
+    <meta property="og:description" content="Learn from industry veterans who worked on Witcher 4 and Tomb Raider. Enrolling now for UE5 and Animation courses.">
+    <meta property="og:image" content="https://revoltentertainment.com/images/academy-bg.jpg">
+    <meta property="og:type" content="website">
+
     <link rel="icon" type="image/png" href="images/aBRcFxAs_400x400.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@100..900&display=swap" rel="stylesheet">
+
     <style>
         :root {
             --bg-color: #050505;
             --text-color: #e0e0e0;
             --accent-color: #8a1c1c; 
-            --card-bg: rgba(15, 15, 15, 0.9);
-            --font-main: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            --accent-glow: rgba(138, 28, 28, 0.6); /* Increased glow opacity */
+            --card-bg: rgba(25, 25, 25, 0.85); /* Darker, more opaque for contrast */
+            --gold-accent: #ffd700;
+            /* UPDATED FONT STACK */
+            --font-main: "Noto Sans Georgian", "Helvetica Neue", Helvetica, Arial, sans-serif;
             --nav-height: 70px;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
-        /* Global Background Image */
         body { 
-            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('images/academy-bg.jpg'); 
+            background-color: var(--bg-color);
+            background-image: 
+                linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.95)), 
+                url('images/academy-bg.jpg'); 
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -29,69 +48,171 @@
             line-height: 1.6; 
         }
 
-        nav { display: flex; justify-content: space-between; align-items: center; padding: 0 5%; background: rgba(5, 5, 5, 0.98); position: fixed; width: 100%; height: var(--nav-height); top: 0; z-index: 1000; border-bottom: 1px solid #222; }
+        /* --- NAV --- */
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 0 5%; background: rgba(5, 5, 5, 0.95); backdrop-filter: blur(10px); position: fixed; width: 100%; height: var(--nav-height); top: 0; z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.1); }
         .logo { font-size: 1.2rem; font-weight: 700; text-transform: uppercase; display: flex; align-items: center; gap: 10px; text-decoration: none; color: white; }
         .logo img { height: 30px; border-radius: 4px; }
         .logo span { color: var(--accent-color); }
+        
+        .nav-right { display: flex; gap: 20px; align-items: center; }
+        .lang-btn {
+            color: var(--accent-color);
+            font-weight: 900;
+            cursor: pointer;
+            border: 1px solid #333;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            transition: 0.3s;
+            text-transform: uppercase;
+        }
+        .lang-btn:hover { background: #1a1a1a; border-color: var(--accent-color); }
 
+        /* --- HERO --- */
         .academy-hero {
-            height: 60vh;
+            min-height: 60vh;
             display: flex; 
             flex-direction: column; 
             justify-content: center; 
             align-items: center; 
             text-align: center; 
-            padding-top: 70px;
+            padding: 100px 20px 40px;
+            position: relative;
         }
 
         .academy-label {
             color: var(--accent-color);
             text-transform: uppercase;
-            letter-spacing: 5px;
+            letter-spacing: 4px;
             font-weight: 800;
             font-size: 0.9rem;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px var(--accent-glow);
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 7vw, 4.5rem); 
+            text-transform: uppercase; 
+            font-weight: 900; 
+            line-height: 1.1;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #fff, #aaa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .discount-banner {
-            background: var(--accent-color);
+            background: linear-gradient(45deg, var(--accent-color), #500000);
             color: white;
-            padding: 8px 16px;
+            padding: 10px 20px;
             font-weight: 800;
             text-transform: uppercase;
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             letter-spacing: 1px;
-            margin-bottom: 25px;
-            border-radius: 2px;
+            margin-bottom: 30px;
+            border-radius: 50px;
+            box-shadow: 0 0 20px var(--accent-glow);
+            animation: pulse 2s infinite;
         }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px 100px; }
-        
-        .course-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); 
-            gap: 25px; 
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 20px var(--accent-glow); }
+            50% { transform: scale(1.02); box-shadow: 0 0 30px var(--accent-glow); }
+            100% { transform: scale(1); box-shadow: 0 0 20px var(--accent-glow); }
+        }
+
+        /* --- PEDIGREE SECTION --- */
+        .pedigree-section {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto 60px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.05); /* Slightly brighter background */
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-left: 4px solid var(--accent-color);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
         
+        .pedigree-section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .pedigree-section p {
+            color: #ccc;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        .highlight-text {
+            color: #fff;
+            font-weight: bold;
+            border-bottom: 1px dotted var(--accent-color);
+        }
+
+        /* --- CARDS --- */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px 100px; }
+        .course-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; }
+        
         .course-card { 
-            background: var(--card-bg); 
-            border: 1px solid #333; 
-            padding: 35px; 
-            border-radius: 4px; 
-            transition: 0.4s; 
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            /* Subtle red glow by default to make it stand out */
+            box-shadow: 0 0 15px rgba(0,0,0,0.5), inset 0 0 20px rgba(138, 28, 28, 0.05);
+            padding: 40px 30px; 
+            border-radius: 12px; 
+            transition: all 0.4s ease; 
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
         }
-        .course-card:hover { border-color: var(--accent-color); transform: translateY(-5px); background: rgba(20, 20, 20, 0.95); }
+
+        /* Hover Effect */
+        .course-card:hover { 
+            transform: translateY(-10px); 
+            box-shadow: 0 15px 40px rgba(0,0,0,0.7), 0 0 20px var(--accent-glow); 
+            border-color: var(--accent-color);
+        }
         
-        .course-card i { font-size: 2rem; color: var(--accent-color); margin-bottom: 15px; }
-        .course-card h3 { font-size: 1.4rem; margin-bottom: 10px; color: #fff; text-transform: uppercase; letter-spacing: 1px; }
-        .course-card p { color: #aaa; font-size: 0.9rem; margin-bottom: 20px; flex-grow: 1; }
+        .icon-box {
+            font-size: 2.5rem; 
+            color: var(--accent-color); 
+            margin-bottom: 20px; 
+            transition: 0.4s;
+            display: inline-block;
+            text-shadow: 0 0 20px rgba(138, 28, 28, 0.5);
+        }
+        .course-card:hover .icon-box { transform: scale(1.1); color: #ff3333; }
+
+        .course-card h3 { font-size: 1.5rem; margin-bottom: 15px; color: #fff; text-transform: uppercase; letter-spacing: 1px; font-weight: 800; }
+        .course-card p { color: #bbb; font-size: 1rem; margin-bottom: 25px; flex-grow: 1; line-height: 1.7; }
         
+        /* New Career Probability Badge */
+        .career-badge {
+            background: rgba(255, 215, 0, 0.1);
+            border: 1px solid var(--gold-accent);
+            color: var(--gold-accent);
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
         .price-tag { 
-            font-size: 1.5rem; 
+            font-size: 1.8rem; 
             font-weight: 800; 
             color: #fff; 
             margin-bottom: 5px; 
@@ -99,24 +220,39 @@
             align-items: baseline;
             gap: 5px;
         }
-        .price-tag span { font-size: 0.8rem; color: #777; font-weight: 400; }
+        .price-tag span { font-size: 0.9rem; color: #777; font-weight: 500; }
         
-        .duration { font-size: 0.75rem; color: var(--accent-color); font-weight: 700; text-transform: uppercase; margin-bottom: 20px; border-bottom: 1px solid #333; padding-bottom: 10px; }
+        .duration { 
+            font-size: 0.8rem; 
+            color: var(--accent-color); 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            margin-bottom: 20px; 
+            border-bottom: 1px solid rgba(255,255,255,0.1); 
+            padding-bottom: 15px; 
+        }
 
         .btn { 
-            padding: 14px 24px; 
-            border: 2px solid var(--accent-color); 
+            width: 100%;
+            padding: 16px; 
+            border: 1px solid var(--accent-color); 
             text-decoration: none; 
             color: white; 
-            font-weight: bold; 
+            font-weight: 800; 
             text-transform: uppercase; 
-            font-size: 0.8rem; 
+            font-size: 0.9rem; 
             text-align: center;
             transition: 0.3s; 
+            background: linear-gradient(45deg, transparent 50%, var(--accent-color) 50%);
+            background-size: 200%;
+            background-position: 0%;
+            position: relative; 
+            z-index: 10; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
-        .btn:hover { background: var(--accent-color); color: white; }
+        .btn:hover { background-position: 100%; box-shadow: 0 0 20px var(--accent-glow); border-color: var(--accent-color); }
 
-        footer { background: rgba(0,0,0,0.9); padding: 40px 20px; text-align: center; border-top: 1px solid #222; font-size: 0.8rem; color: #555; }
+        footer { background: #000; padding: 40px 20px; text-align: center; border-top: 1px solid #111; font-size: 0.8rem; color: #555; margin-top: auto; }
     </style>
 </head>
 <body>
@@ -125,74 +261,128 @@
             <img src="images/aBRcFxAs_400x400.png" alt="Revolt">
             Revolt <span>Academy</span>
         </a>
-        <a href="index.html" style="color: #888; text-decoration: none; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Studio Home</a>
+        <div class="nav-right">
+            <a href="index.html" class="tr" data-en="Studio Home" data-ka="მთავარი" style="color: #aaa; text-decoration: none; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Studio Home</a>
+            <div class="lang-btn" onclick="toggleLanguage()" id="lang-switcher">KA</div>
+        </div>
     </nav>
 
     <div class="academy-hero">
-        <div class="academy-label">Revolt Academy</div>
-        <h1 style="font-size: clamp(2.5rem, 7vw, 4.5rem); text-transform: uppercase; font-weight: 900; line-height: 1;">Master Your Craft</h1>
-        <p style="color: #bbb; max-width: 700px; margin: 15px 0 30px; font-size: 1.1rem;">Professional Game Development education based in Tbilisi, Georgia.</p>
-        <div class="discount-banner">Buy full 12-month course & get 1.5 months FREE</div>
+        <div class="academy-label tr" data-en="Revolt Academy" data-ka="რევოლტ აკადემია">Revolt Academy</div>
+        <h1 class="hero-title tr" data-en="Master Your Craft" data-ka="დაეუფლე ხელოვნებას">Master Your Craft</h1>
+        <p class="tr" data-en="Professional Game Development education based in Tbilisi, Georgia." 
+           data-ka="პროფესიონალური თამაშების დეველოპმენტის განათლება თბილისში."
+           style="color: #bbb; max-width: 700px; margin: 0 0 30px; font-size: 1.1rem;">
+            Professional Game Development education based in Tbilisi, Georgia.
+        </p>
+        <div class="discount-banner tr" 
+             data-en="Buy full 12-month course & get 2 months FREE" 
+             data-ka="შეიძინეთ 12-თვიანი კურსი და მიიღეთ 2 თვე უფასოდ">
+             Buy full 12-month course & get 2 months FREE
+        </div>
     </div>
 
     <div class="container">
-        <div class="course-grid">
-            <div class="course-card">
-                <div>
-                    <i class="fas fa-mountain-sun"></i>
-                    <h3>3D Environment Art</h3>
-                    <p>Learn to create high-fidelity environments in Unreal Engine 5. From modular assets to cinematic lighting.</p>
-                </div>
-                <div>
-                    <div class="duration">12 Month Program</div>
-                    <div class="price-tag">300 GEL <span>/ month</span></div>
-                   <a href="apply.html" class="btn">Apply Now</a>
-                </div>
-            </div>
-
-            <div class="course-card">
-                <div>
-                    <i class="fas fa-terminal"></i>
-                    <h3>Gameplay Programming</h3>
-                    <p>Deep dive into C++ and Blueprints. Architect responsive combat, AI systems, and game logic.</p>
-                </div>
-                <div>
-                    <div class="duration">12 Month Program</div>
-                    <div class="price-tag">300 GEL <span>/ month</span></div>
-                   <a href="apply.html" class="btn">Apply Now</a>
-                </div>
-            </div>
-
-            <div class="course-card">
-                <div>
-                    <i class="fas fa-person-walking-arrow-right"></i>
-                    <h3>Animation Course</h3>
-                    <p>Master character movement, rigging, and cinematic storytelling using modern animation pipelines.</p>
-                </div>
-                <div>
-                    <div class="duration">12 Month Program</div>
-                    <div class="price-tag">300 GEL <span>/ month</span></div>
-                    <a href="apply.html" class="btn">Apply Now</a>
-                </div>
-            </div>
-
-            <div class="course-card">
-                <div>
-                    <i class="fas fa-microchip"></i>
-                    <h3>Kids Academy</h3>
-                    <p>Empowering the next generation. Specialized curriculum for young creators in 3D and game logic.</p>
-                </div>
-                <div>
-                    <div class="duration">12 Month Program</div>
-                    <div class="price-tag">300 GEL <span>/ month</span></div>
-                    <a href="apply.html" class="btn">Apply Now</a>
-                </div>
-            </div>
+        <div class="pedigree-section">
+            <h2 class="tr" data-en="Learn From Industry Leaders" data-ka="ისწავლე ინდუსტრიის ლიდერებისგან">Learn From Industry Leaders</h2>
+            <p class="tr" 
+               data-en="Our curriculum is built by veterans who have worked on global hits like <span class='highlight-text'>The Witcher 4</span>, <span class='highlight-text'>Tomb Raider</span>, and <span class='highlight-text'>UFL</span>. We teach from experience, having successfully released our own original title, <span class='highlight-text'>The Seven Enchantments</span>."
+               data-ka="ჩვენი პროგრამა შექმნილია ვეტერანების მიერ, რომლებსაც უმუშავიათ ისეთ გლობალურ ჰიტებზე, როგორიცაა <span class='highlight-text'>The Witcher 4</span>, <span class='highlight-text'>Tomb Raider</span> და <span class='highlight-text'>UFL</span>. ჩვენ ვასწავლით რეალური გამოცდილებით, რადგან გამოშვებული გვაქვს საკუთარი თამაში <span class='highlight-text'>The Seven Enchantments</span>.">
+               Our curriculum is built by veterans who have worked on global hits like <span class="highlight-text">The Witcher 4</span>, <span class="highlight-text">Tomb Raider</span>, and <span class="highlight-text">UFL</span>. We teach from experience, having successfully released our own original title, <span class="highlight-text">The Seven Enchantments</span>.
+            </p>
         </div>
+    
+        <div class="course-grid">
+            
+            <div class="course-card">
+                <div>
+                    <i class="fas fa-mountain-sun icon-box"></i>
+                    <h3 class="tr" data-en="3D Environment Art" data-ka="3D გარემოს დიზაინი">3D Environment Art</h3>
+                    <p class="tr" data-en="Learn to create high-fidelity environments in Unreal Engine 5. From modular assets to cinematic lighting."
+                       data-ka="ისწავლეთ მაღალი ხარისხის გარემოს შექმნა Unreal Engine 5-ში. მოდულური ასეტებიდან კინემატოგრაფიულ განათებამდე.">
+                        Learn to create high-fidelity environments in Unreal Engine 5. From modular assets to cinematic lighting.
+                    </p>
+                </div>
+                <div>
+                    <div class="career-badge">
+                        <i class="fas fa-chart-line"></i>
+                        <span class="tr" data-en="Career Outlook: Very High" data-ka="დასაქმების პერსპექტივა: ძალიან მაღალი">Career Outlook: Very High</span>
+                    </div>
+                    <div class="duration tr" data-en="12 Month Program" data-ka="12 თვიანი პროგრამა">12 Month Program</div>
+                    <div class="price-tag">300 ₾ <span class="tr" data-en="/ month" data-ka="/ თვე">/ month</span></div>
+                    <a href="3denv.html" class="btn tr" data-en="Learn More" data-ka="გაიგე მეტი">Learn More</a>
+                </div>
+            </div>
+
+            <div class="course-card">
+                <div>
+                    <i class="fas fa-terminal icon-box"></i>
+                    <h3 class="tr" data-en="Gameplay Programming" data-ka="გეიმფლეი პროგრამირება">Gameplay Programming</h3>
+                    <p class="tr" data-en="Deep dive into C++ and Blueprints. Architect responsive combat, AI systems, and game logic."
+                       data-ka="შეისწავლეთ C++ და Blueprints სიღრმისეულად. ააწყვეთ საბრძოლო სისტემები, AI და თამაშის ლოგიკა.">
+                        Deep dive into C++ and Blueprints. Architect responsive combat, AI systems, and game logic.
+                    </p>
+                </div>
+                <div>
+                    <div class="career-badge">
+                        <i class="fas fa-briefcase"></i>
+                        <span class="tr" data-en="Career Outlook: High Demand" data-ka="დასაქმების პერსპექტივა: მაღალი მოთხოვნა">Career Outlook: High Demand</span>
+                    </div>
+                    <div class="duration tr" data-en="12 Month Program" data-ka="12 თვიანი პროგრამა">12 Month Program</div>
+                    <div class="price-tag">300 ₾ <span class="tr" data-en="/ month" data-ka="/ თვე">/ month</span></div>
+                    <a href="gameplay.html" class="btn tr" data-en="Learn More" data-ka="გაიგე მეტი">Learn More</a>
+                </div>
+            </div>
+
+            <div class="course-card">
+                <div>
+                    <i class="fas fa-person-walking-arrow-right icon-box"></i>
+                    <h3 class="tr" data-en="Animation Course" data-ka="ანიმაციის კურსი">Animation Course</h3>
+                    <p class="tr" data-en="Master character movement, rigging, and cinematic storytelling using modern animation pipelines."
+                       data-ka="დაეუფლეთ პერსონაჟის მოძრაობას, რიგინგს და კინემატოგრაფიულ თხრობას თანამედროვე მეთოდებით.">
+                        Master character movement, rigging, and cinematic storytelling using modern animation pipelines.
+                    </p>
+                </div>
+                <div>
+                    <div class="career-badge">
+                        <i class="fas fa-film"></i>
+                        <span class="tr" data-en="Career Outlook: Growing" data-ka="დასაქმების პერსპექტივა: მზარდი">Career Outlook: Growing</span>
+                    </div>
+                    <div class="duration tr" data-en="12 Month Program" data-ka="12 თვიანი პროგრამა">12 Month Program</div>
+                    <div class="price-tag">300 ₾ <span class="tr" data-en="/ month" data-ka="/ თვე">/ month</span></div>
+                    <a href="animation.html" class="btn tr" data-en="Learn More" data-ka="გაიგე მეტი">Learn More</a>
+                </div>
+            </div>
+
+            </div>
     </div>
 
     <footer>
         <p>REVOLT ACADEMY &copy; 2025 | TBILISI, GEORGIA</p>
     </footer>
+
+    <script>
+        // --- SHARED TRANSLATION SCRIPT ---
+        function toggleLanguage() {
+            const btn = document.getElementById('lang-switcher');
+            const currentLang = btn.innerText === "KA" ? "ka" : "en";
+            
+            document.querySelectorAll('.tr').forEach(el => {
+                const text = el.getAttribute(`data-${currentLang}`);
+                // Support HTML inside the data attributes (for bold tags)
+                if (text) el.innerHTML = text;
+            });
+
+            btn.innerText = (currentLang === "ka") ? "EN" : "KA";
+            localStorage.setItem('selected-lang', currentLang);
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('selected-lang');
+            if (savedLang === 'ka') {
+                toggleLanguage(); 
+            }
+        });
+    </script>
 </body>
 </html>

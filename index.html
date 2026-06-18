@@ -8,14 +8,19 @@
     <link rel="icon" type="image/png" href="images/aBRcFxAs_400x400.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@100..900&display=swap" rel="stylesheet">
+
     <style>
         :root {
             --bg-color: #050505;
             --text-color: #e0e0e0;
             --accent-color: #8a1c1c; 
+            --accent-glow: rgba(138, 28, 28, 0.6); 
             --secondary-bg: #121212;
             --input-bg: #1e1e1e;
-            --font-main: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            --font-main: "Noto Sans Georgian", "Helvetica Neue", Helvetica, Arial, sans-serif;
             --nav-height: 70px;
         }
 
@@ -28,145 +33,48 @@
             font-family: var(--font-main);
             line-height: 1.6;
             overflow-x: hidden;
+            font-weight: 400;
         }
 
-        /* --- PRELOADER STYLES --- */
+        /* --- PRELOADER --- */
         #preloader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #050505;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 99999;
-            opacity: 1;
-            visibility: visible;
-            transition: opacity 1s ease, visibility 1s ease; /* Slower fade exit */
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: #050505; display: flex; justify-content: center; align-items: center;
+            z-index: 99999; opacity: 1; visibility: visible;
+            transition: opacity 1s ease, visibility 1s ease;
         }
-
-        #preloader.fade-out {
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-        }
-
-        .loader-content {
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .loader-logo {
-            width: 60px;
-            height: 60px;
-            border-radius: 8px;
-            animation: pulse 1.5s infinite ease-in-out;
-        }
-
-        .loader-bar {
-            width: 120px;
-            height: 2px;
-            background: #222;
-            position: relative;
-            overflow: hidden;
-        }
-
+        #preloader.fade-out { opacity: 0; visibility: hidden; pointer-events: none; }
+        .loader-content { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 20px; }
+        .loader-logo { width: 60px; height: 60px; border-radius: 8px; animation: pulse 1.5s infinite ease-in-out; }
+        .loader-bar { width: 120px; height: 2px; background: #222; position: relative; overflow: hidden; }
         .loader-bar::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: var(--accent-color);
-            animation: loading 1.5s infinite;
+            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+            background: var(--accent-color); animation: loading 1.5s infinite;
         }
-
-        @keyframes pulse {
-            0% { transform: scale(1); opacity: 0.8; }
-            50% { transform: scale(1.1); opacity: 1; }
-            100% { transform: scale(1); opacity: 0.8; }
-        }
-
-        @keyframes loading {
-            0% { left: -100%; }
-            50% { left: 0; }
-            100% { left: 100%; }
-        }
+        @keyframes pulse { 0%, 100% { transform: scale(1); opacity: 0.8; } 50% { transform: scale(1.1); opacity: 1; } }
+        @keyframes loading { 0% { left: -100%; } 50% { left: 0; } 100% { left: 100%; } }
 
         /* --- ANIMATIONS --- */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
 
         /* --- NAVIGATION --- */
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 5%;
-            background-color: rgba(5, 5, 5, 0.98);
-            position: fixed;
-            width: 100%;
-            height: var(--nav-height);
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid #222;
-        }
-
-        .logo {
-            font-size: 1.2rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            text-transform: uppercase;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            z-index: 1001;
-        }
-
-        .logo img { height: 30px; width: 30px; border-radius: 4px; }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 0 5%; background-color: rgba(5, 5, 5, 0.98); position: fixed; width: 100%; height: var(--nav-height); top: 0; z-index: 1000; border-bottom: 1px solid #222; }
+        .logo { font-size: 1.1rem; font-weight: 700; text-transform: uppercase; display: flex; align-items: center; gap: 10px; text-decoration: none; color: white; }
+        .logo img { height: 30px; border-radius: 4px; }
         .logo span { color: var(--accent-color); }
-
-        .nav-links { display: flex; gap: 30px; }
-        .nav-links a {
-            text-decoration: none;
-            color: #888;
-            font-size: 0.85rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            transition: 0.3s;
-        }
+        .nav-links { display: flex; gap: 30px; list-style: none; align-items: center; }
+        .nav-links a { text-decoration: none; color: #888; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; transition: 0.3s; }
         .nav-links a:hover { color: var(--accent-color); }
+        .lang-btn { color: var(--accent-color); font-weight: 900; cursor: pointer; border: 1px solid #333; padding: 5px 10px; border-radius: 4px; font-size: 0.75rem; transition: 0.3s; text-transform: uppercase; }
+        .lang-btn:hover { background: #1a1a1a; }
+        .menu-btn { display: none; font-size: 1.5rem; cursor: pointer; color: var(--text-color); }
 
-        .menu-btn {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--text-color);
-            z-index: 1001;
-        }
-
+        /* --- HERO (UPDATED) --- */
         header {
             height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.9)), url('images/Key Visual 1920x1080.png');
+            /* Default to Georgian version */
+            background: url('images/slogan.jpg');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -175,131 +83,58 @@
             align-items: center;
             text-align: center;
             padding: 0 20px;
+            transition: background-image 0.5s ease; /* Smooth transition for image swap */
         }
 
-        header h1 {
-            font-size: clamp(2.5rem, 8vw, 4rem); 
-            font-weight: 800;
-            margin-bottom: 10px;
-            letter-spacing: -1px;
-            animation: fadeInUp 1s ease forwards;
-            line-height: 1.1;
-        }
-
-        header p {
-            font-size: clamp(1rem, 4vw, 1.2rem);
-            color: #aaa;
-            max-width: 600px;
-            margin-bottom: 30px;
-            animation: fadeInUp 1s ease forwards 0.3s;
-            opacity: 0;
-            animation-fill-mode: forwards;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 14px 28px;
-            border: 2px solid var(--accent-color);
-            background: transparent;
-            color: var(--text-color);
-            font-weight: 700;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: 0.3s;
-            letter-spacing: 1px;
-            font-size: 0.85rem;
-            text-decoration: none;
-        }
-
-        .btn:hover {
-            background: var(--accent-color);
-            box-shadow: 0 0 20px rgba(138, 28, 28, 0.4);
-        }
-
+        /* --- BUTTONS --- */
+        .btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; border: 2px solid var(--accent-color); background: transparent; color: var(--text-color); font-weight: 700; text-transform: uppercase; cursor: pointer; transition: 0.3s; font-size: 0.8rem; text-decoration: none; }
+        .btn:hover { background: var(--accent-color); box-shadow: 0 0 20px rgba(138, 28, 28, 0.4); }
         .btn-main { background: var(--accent-color); }
-        .btn-group { display: flex; gap: 15px; flex-wrap: wrap; margin-top: 20px; }
+        .btn-group { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 25px; }
 
-        section { padding: 80px 5%; }
-        .section-title { 
-            font-size: clamp(1.8rem, 5vw, 2.5rem); 
-            font-weight: 800; 
-            margin-bottom: 30px; 
-            text-align: center; 
-            width: 100%; 
-        }
-
-        #about { background-color: var(--secondary-bg); }
-        .about-content { max-width: 750px; margin: 0 auto; text-align: center; font-size: 1.05rem; color: #bbb; }
-
-        .game-card {
-            display: flex;
-            flex-direction: row;
-            background-color: #0f0f0f;
-            border: 1px solid #222;
-            border-radius: 8px;
-            overflow: hidden;
-            margin-top: 20px;
-        }
-
-        .game-image {
-            flex: 1;
-            background: url('images/Key Visual 1920x1080.png');
-            background-size: cover;
-            background-position: center;
-            min-height: 350px;
-        }
-
-        .game-info { flex: 1; padding: 40px; }
+        /* --- GAME CARDS --- */
+        .game-card { display: flex; background-color: #0f0f0f; border: 1px solid #222; border-radius: 8px; overflow: hidden; margin-top: 20px; }
+        .game-image { flex: 1; background: url('images/Key Visual 1920x1080.png'); background-size: cover; background-position: center; min-height: 400px; }
+        .game-info { flex: 1; padding: 50px; }
         .game-info h3 { font-size: 2.2rem; margin-bottom: 15px; color: #fff; font-weight: 800; }
-
         .tags { margin-bottom: 20px; display: flex; flex-wrap: wrap; gap: 8px; }
-        .tags span {
-            background: #222;
-            padding: 4px 12px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            border-radius: 20px;
-            color: #888;
-        }
+        .tags span { background: #222; padding: 4px 12px; font-size: 0.65rem; font-weight: 700; border-radius: 4px; color: #888; text-transform: uppercase; }
 
+        /* --- ACADEMY SECTION --- */
+        #academy-promo { position: relative; padding: 140px 5%; background: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.95)), url('images/academy-bg.jpg'); background-size: cover; background-position: center; background-attachment: fixed; border-top: 2px solid var(--accent-color); border-bottom: 2px solid var(--accent-color); display: flex; justify-content: center; align-items: center; }
+        .academy-glass-panel { background: rgba(10, 10, 10, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 2px solid rgba(255, 255, 255, 0.05); border-top: 4px solid var(--accent-color); padding: 70px 50px; max-width: 1000px; width: 100%; border-radius: 16px; text-align: center; position: relative; overflow: hidden; transition: 0.5s; box-shadow: 0 0 30px rgba(138, 28, 28, 0.15); animation: borderPulse 4s infinite alternate; }
+        @keyframes borderPulse { 0% { box-shadow: 0 0 20px rgba(138, 28, 28, 0.1); border-color: rgba(255,255,255,0.1); } 100% { box-shadow: 0 0 50px rgba(138, 28, 28, 0.5); border-color: var(--accent-color); } }
+        .academy-glass-panel:hover { transform: translateY(-8px); }
+        .academy-glass-panel h2 { font-size: 3rem; margin-bottom: 20px; background: linear-gradient(to right, #fff, #bbb); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 0 0 30px rgba(255,255,255,0.1); }
+        .academy-features { display: flex; justify-content: center; gap: 60px; margin: 50px 0; flex-wrap: wrap; }
+        .af-item { display: flex; flex-direction: column; align-items: center; gap: 15px; color: #ccc; font-size: 1rem; font-weight: 800; text-transform: uppercase; transition: 0.3s; }
+        .af-item i { font-size: 2.5rem; color: #555; transition: 0.3s; }
+        .academy-glass-panel:hover .af-item i { color: var(--accent-color); transform: scale(1.1); text-shadow: 0 0 20px var(--accent-glow); }
+        .academy-badge { background: var(--accent-color); color: white; padding: 5px 15px; border-radius: 20px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; position: absolute; top: 20px; right: 20px; box-shadow: 0 0 15px var(--accent-glow); }
+
+        /* --- SECTIONS --- */
+        section { padding: 100px 5%; }
+        .section-title { font-size: 2.5rem; font-weight: 900; margin-bottom: 20px; text-align: center; text-transform: uppercase; color: #fff; }
+
+        /* --- SUPPORT FORM --- */
         #contact { background-color: var(--secondary-bg); }
         .contact-container { max-width: 600px; margin: 0 auto; }
-        .form-control { width: 100%; padding: 15px; background-color: var(--input-bg); border: 1px solid #222; color: #fff; font-family: var(--font-main); margin-top: 8px; transition: 0.3s; outline: none; border-radius: 4px; }
+        .form-control { width: 100%; padding: 15px; background-color: var(--input-bg); border: 1px solid #222; color: #fff; margin-top: 8px; border-radius: 4px; outline: none; }
         .form-control:focus { border-color: var(--accent-color); }
-        .submit-btn { width: 100%; padding: 16px; background-color: var(--accent-color); color: #fff; font-weight: 700; border: none; cursor: pointer; text-transform: uppercase; margin-top: 15px; border-radius: 4px; }
+        .submit-btn { width: 100%; padding: 18px; background-color: var(--accent-color); color: #fff; font-weight: 800; border: none; cursor: pointer; text-transform: uppercase; margin-top: 20px; border-radius: 4px; transition: 0.3s; }
 
-        footer { background-color: #000; padding: 50px 20px; text-align: center; border-top: 1px solid #111; }
-        .social-links { margin-bottom: 20px; }
-        .social-links a { font-size: 1.4rem; margin: 0 15px; color: #555; transition: 0.3s; }
+        footer { background-color: #000; padding: 60px 20px; text-align: center; border-top: 1px solid #111; }
+        .social-links { margin-bottom: 25px; }
+        .social-links a { font-size: 1.5rem; margin: 0 15px; color: #444; transition: 0.3s; }
         .social-links a:hover { color: #fff; }
 
         @media (max-width: 900px) {
             .game-card { flex-direction: column; }
-            .game-image { min-height: 250px; }
-        }
-
-        @media (max-width: 768px) {
             .menu-btn { display: block; }
-            .nav-links {
-                position: fixed;
-                top: var(--nav-height);
-                left: -100%;
-                flex-direction: column;
-                background-color: #0a0a0a;
-                width: 100%;
-                height: calc(100vh - var(--nav-height));
-                text-align: center;
-                padding: 40px 0;
-                transition: 0.4s;
-                border-top: 1px solid #222;
-            }
-            .nav-links.active { left: 0; }
-            .nav-links a { font-size: 1.5rem; display: block; padding: 15px 0; }
-            .btn-group { justify-content: center; }
-            .btn { width: 100%; justify-content: center; }
-            section { padding: 60px 20px; }
+            .nav-links { display: none; flex-direction: column; position: fixed; top: var(--nav-height); left: 0; width: 100%; background: #0a0a0a; padding: 40px; border-bottom: 1px solid #222; z-index: 999; }
+            .nav-links.active { display: flex; }
+            .academy-glass-panel h2 { font-size: 2rem; }
+            .academy-features { gap: 30px; }
         }
     </style>
 </head>
@@ -312,74 +147,92 @@
         </div>
     </div>
 
-   <nav>
-    <div class="logo">
-        <img src="images/aBRcFxAs_400x400.png" alt="Revolt Icon">
-        Revolt <span>Entertainment</span>
-    </div>
-    <div class="menu-btn" id="menu-toggle">
-        <i class="fas fa-bars"></i>
-    </div>
-    <ul class="nav-links" id="nav-menu">
-        <li><a href="index.html#home">Home</a></li>
-        <li><a href="academy.html">Academy</a></li>
-        <li><a href="index.html#games">Games</a></li>
-        <li><a href="index.html#contact">Support</a></li>
-        <li><a href="privacy.html" style="color: var(--accent-color); border: 1px solid rgba(138, 28, 28, 0.3); padding: 5px 12px; border-radius: 4px;">Privacy</a></li>
-    </ul>
-</nav>
+    <nav>
+        <a href="index.html" class="logo">
+            <img src="images/aBRcFxAs_400x400.png" alt="Revolt">
+            REVOLT <span>ENTERTAINMENT</span>
+        </a>
+        
+        <ul class="nav-links" id="nav-menu">
+            <li><a href="#home" class="tr" data-en="Home" data-ka="მთავარი">Home</a></li>
+            <li><a href="academy.html" class="tr" data-en="Academy" data-ka="აკადემია">Academy</a></li>
+            <li><a href="#games" class="tr" data-en="Games" data-ka="თამაშები">Games</a></li>
+            <li><a href="#contact" class="tr" data-en="Support" data-ka="მხარდაჭერა">Support</a></li>
+            <li><div class="lang-btn" onclick="toggleLanguage()" id="lang-switcher">KA</div></li>
+        </ul>
+
+        <div class="menu-btn" id="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
 
     <header id="home">
-        <h1>UNCOVER THE DARKNESS</h1>
-        <p>A premium Georgian game development studio crafting high-atmosphere horror experiences.</p>
-        <a href="#games" class="btn">Explore Projects</a>
+        
     </header>
 
-    <section id="about" class="reveal">
-        <h2 class="section-title">The Studio</h2>
-        <div class="about-content">
-            <p>Based in Tbilisi, Georgia, Revolt Entertainment is dedicated to the art of atmospheric storytelling. We blend traditional folklore with modern mechanics to create psychological horror that lingers.</p>
-        </div>
-    </section>
-
     <section id="games" class="reveal">
-        <h2 class="section-title">Current Projects</h2>
+        <h2 class="section-title tr" data-en="Current Projects" data-ka="მიმდინარე პროექტები">Current Projects</h2>
         <div class="game-card">
             <div class="game-image"></div>
             <div class="game-info">
                 <div class="tags"><span>Folk Horror</span><span>Unreal Engine 5</span><span>Survival</span></div>
-                <h3>The Seven Enchantments</h3>
-                <p>Journey into the cursed 19th-century village of Pradonin. A narrative-driven horror experience where survival depends on your wits and the secrets you uncover.</p>
+                <h3 class="tr" data-en="The Seven Enchantments" data-ka="The Seven Enchantments">The Seven Enchantments</h3>
+                <p class="tr" data-en="Journey into the cursed 19th-century village of Pradonin. A narrative-driven horror experience where survival depends on your wits and secrets."
+                   data-ka="გაემგზავრეთ მე-19 საუკუნის დაწყევლილ სოფელ პრადონინში. ნარატიული საშინელებათა გამოცდილება, სადაც გადარჩენა თქვენს გონებასა და საიდუმლოებებზეა დამოკიდებული.">
+                    Journey into the cursed 19th-century village of Pradonin. A narrative-driven horror experience where survival depends on your wits and secrets.
+                </p>
+                
                 <div class="btn-group">
-                    <a href="tse.html" class="btn btn-main"><i class="fas fa-eye"></i> View Game Details</a>
-                    <a href="https://store.steampowered.com/app/3612720/" target="_blank" class="btn"><i class="fab fa-steam"></i></a>
+                    <a href="tse.html" class="btn btn-main tr" data-en="View Details" data-ka="დეტალები">View Details</a>
+                    <a href="https://store.steampowered.com/app/3612720/" target="_blank" class="btn">
+                        <i class="fab fa-steam"></i> Steam
+                    </a>
                     <a href="https://store.epicgames.com/en-US/p/the-seven-enchantments-374db8" target="_blank" class="btn">
-                        <img src="images/Epic_games_store_logo.png" alt="Epic Games Store" style="width: 20px; height: auto;">
+                        <img src="images/Epic_games_store_logo.png" alt="EGS" style="width: 20px; height: auto; vertical-align: middle;">
+                        <span>Epic Games</span>
                     </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="academy-promo" class="reveal" style="position: relative; padding: 120px 5%; background: linear-gradient(rgba(5, 5, 5, 0.85), rgba(5, 5, 5, 0.95)), url('images/academy-bg.jpg'); background-size: cover; background-position: center; background-attachment: fixed; border-top: 1px solid #222; border-bottom: 1px solid #222; text-align: center;">
-        <div style="max-width: 800px; margin: 0 auto; position: relative; z-index: 2;">
-            <h2 class="section-title" style="margin-bottom: 20px;">Revolt Academy</h2>
-            <p style="color: #ccc; font-size: 1.1rem; margin-bottom: 35px; line-height: 1.8;">
-                The next generation of Georgian game developers starts here. Learn the industry-standard workflows used to create <strong>The Seven Enchantments</strong>.
+    <section id="academy-promo" class="reveal">
+        <div class="academy-glass-panel">
+            <div class="academy-badge tr" data-en="Now Enrolling" data-ka="მიმდინარეობს მიღება">Now Enrolling</div>
+            <h2 class="section-title tr" data-en="Revolt Academy" data-ka="რევოლტ აკადემია">Revolt Academy</h2>
+            <p class="tr" style="color: #bbb; font-size: 1.15rem; max-width: 750px; margin: 0 auto; line-height: 1.8;" 
+               data-en="Master the tools used to create AAA titles. Learn Unreal Engine 5, C++, and Animation from the developers behind The Seven Enchantments."
+               data-ka="დაეუფლეთ ინსტრუმენტებს, რომლითაც იქმნება AAA თამაშები. ისწავლეთ Unreal Engine 5, C++ და ანიმაცია 'შვიდი შელოცვის' შემქმნელებისგან.">
+                Master the tools used to create AAA titles. Learn Unreal Engine 5, C++, and Animation from the developers behind The Seven Enchantments.
             </p>
-            <a href="academy.html" class="btn btn-main" style="padding: 18px 40px; font-size: 1rem;">Explore Courses & Enroll</a>
+
+            <div class="academy-features">
+                <div class="af-item">
+                    <i class="fas fa-mountain-sun"></i>
+                    <span class="tr" data-en="3D Environment" data-ka="3D გარემო">3D Environment</span>
+                </div>
+                <div class="af-item">
+                    <i class="fas fa-terminal"></i>
+                    <span class="tr" data-en="Programming" data-ka="პროგრამირება">Programming</span>
+                </div>
+                <div class="af-item">
+                    <i class="fas fa-person-walking-arrow-right"></i>
+                    <span class="tr" data-en="Animation" data-ka="ანიმაცია">Animation</span>
+                </div>
+            </div>
+
+            <a href="academy.html" class="btn btn-main tr" data-en="Start Your Career" data-ka="დაიწყე კარიერა" style="font-size: 1rem; padding: 18px 40px; box-shadow: 0 0 25px var(--accent-glow);">Start Your Career</a>
         </div>
-        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 300px; height: 300px; background: var(--accent-color); filter: blur(150px); opacity: 0.15; z-index: 1;"></div>
     </section>
 
     <section id="contact" class="reveal">
-        <h2 class="section-title">Support</h2>
+        <h2 class="section-title tr" data-en="Support" data-ka="მხარდაჭერა">Support</h2>
         <div class="contact-container">
             <form action="https://formspree.io/f/xkowjegg" method="POST">
-                <div><label style="font-size: 0.8rem; color: #777;">Full Name</label><input type="text" name="name" class="form-control" required></div>
-                <div style="margin-top: 15px;"><label style="font-size: 0.8rem; color: #777;">Email Address</label><input type="email" name="email" class="form-control" required></div>
-                <div style="margin-top: 15px;"><label style="font-size: 0.8rem; color: #777;">Message</label><textarea name="message" class="form-control" rows="5" required></textarea></div>
-                <button type="submit" class="submit-btn">Submit Ticket</button>
+                <input type="text" name="name" class="form-control" placeholder="Full Name" required>
+                <input type="email" name="email" class="form-control" placeholder="Email Address" required style="margin-top:15px;">
+                <textarea name="message" class="form-control" rows="5" placeholder="Your Message" required style="margin-top:15px;"></textarea>
+                <button type="submit" class="submit-btn tr" data-en="Submit Ticket" data-ka="გაგზავნა">Submit Ticket</button>
             </form>
         </div>
     </section>
@@ -387,49 +240,78 @@
     <footer>
         <div class="social-links">
             <a href="https://www.facebook.com/RevoltEntertainment/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/revolt.entertainment/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.youtube.com/@RevoltEntertainment" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.tiktok.com/@revolt.entertainm8" target="_blank"><i class="fab fa-tiktok"></i></a>
             <a href="https://discord.gg/W2vdbyZr7R" target="_blank"><i class="fab fa-discord"></i></a>
         </div>
-        <p style="font-size: 0.75rem; color: #444; letter-spacing: 1px;">REVOLT ENTERTAINMENT &copy; 2025 | TBILISI, GEORGIA</p>
+        <p style="font-size: 0.7rem; color: #444; letter-spacing: 2px; text-transform: uppercase;">REVOLT ENTERTAINMENT &copy; 2025 | TBILISI, GEORGIA</p>
     </footer>
 
     <script>
-        // Preloader Logic with Forced Minimum Delay (2 Seconds)
+        // --- PRELOADER LOGIC ---
         window.addEventListener('load', function() {
             const preloader = document.getElementById('preloader');
-            
-            // Force the loader to stay for exactly 2 seconds before fading out
-            setTimeout(() => {
-                if (preloader) {
-                    preloader.classList.add('fade-out');
-                }
-            }, 2000); 
+            setTimeout(() => { if (preloader) preloader.classList.add('fade-out'); }, 2000); 
         });
 
-        // Mobile Menu Logic
+        // --- TRANSLATION & WALLPAPER LOGIC ---
+        function toggleLanguage() {
+            const btn = document.getElementById('lang-switcher');
+            const currentLang = btn.innerText === "KA" ? "ka" : "en";
+            const header = document.getElementById('home');
+
+            // 1. Swap Text
+            document.querySelectorAll('.tr').forEach(el => {
+                const text = el.getAttribute(`data-${currentLang}`);
+                if (text) el.innerText = text;
+            });
+
+            // 2. Swap Header Image (slogan vs slogan-en)
+            if (header) {
+                if (currentLang === 'en') {
+                    header.style.backgroundImage = "url('images/slogan-en.jpg')";
+                } else {
+                    header.style.backgroundImage = "url('images/slogan.jpg')";
+                }
+            }
+
+            // 3. Update Button and Save
+            btn.innerText = (currentLang === "ka") ? "EN" : "KA";
+            localStorage.setItem('selected-lang', currentLang);
+        }
+
+        // --- INITIALIZATION ---
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('selected-lang');
+            const header = document.getElementById('home');
+
+            // If user previously saved 'en', ensure English Wallpaper is loaded
+            if (savedLang === 'en') {
+                if(header) header.style.backgroundImage = "url('images/slogan-en.jpg')";
+            } 
+            // Otherwise, trigger switch to Georgian (Default)
+            else {
+                toggleLanguage(); 
+            }
+        });
+
+        // --- MOBILE MENU LOGIC ---
         const menuToggle = document.getElementById('menu-toggle');
         const navMenu = document.getElementById('nav-menu');
-        const navLinks = document.querySelectorAll('.nav-links a');
 
-        menuToggle.addEventListener('click', () => {
+        menuToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
             navMenu.classList.toggle('active');
-            menuToggle.querySelector('i').classList.toggle('fa-bars');
-            menuToggle.querySelector('i').classList.toggle('fa-times');
+            const icon = menuToggle.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
         });
 
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-                menuToggle.querySelector('i').classList.add('fa-bars');
-                menuToggle.querySelector('i').classList.remove('fa-times');
-            });
-        });
-
-        // Scroll Reveal
+        // --- SCROLL REVEAL ---
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
+                if (entry.isIntersecting) entry.target.classList.add('active');
             });
         }, { threshold: 0.1 });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));

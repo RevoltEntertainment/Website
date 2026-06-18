@@ -1,13 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+  <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Seven Enchantments | Revolt Entertainment</title>
+    
+    <title>The Seven Enchantments | Survival Folk Horror Game</title>
+    <meta name="description" content="Journey into the cursed village of Pradonin. The Seven Enchantments is a narrative-driven survival horror game based on folklore, developed in Unreal Engine 5.">
+    <meta name="keywords" content="The Seven Enchantments, Horror Game, Survival Horror, Folk Horror, PC Game, Unreal Engine 5, Revolt Entertainment">
+    
+    <meta property="og:title" content="The Seven Enchantments - Available Now">
+    <meta property="og:description" content="Survive the hunt. The Leshy roams. A premium horror experience from Revolt Entertainment.">
+    <meta property="og:image" content="https://revoltentertainment.com/images/Key Visual 1920x1080.png">
     
     <link rel="icon" type="image/png" href="images/aBRcFxAs_400x400.png">
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@100..900&display=swap" rel="stylesheet">
 
     <style>
         :root {
@@ -15,7 +25,8 @@
             --text-color: #e0e0e0;
             --accent-color: #8a1c1c; 
             --secondary-bg: #0d0d0d;
-            --font-main: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            /* UPDATED FONT STACK */
+            --font-main: "Noto Sans Georgian", "Helvetica Neue", Helvetica, Arial, sans-serif;
             --nav-height: 70px;
         }
 
@@ -31,6 +42,20 @@
         .logo { font-size: 1.2rem; font-weight: 700; text-transform: uppercase; display: flex; align-items: center; gap: 10px; cursor: pointer; text-decoration: none; color: white; }
         .logo img { height: 30px; border-radius: 4px; }
         .logo span { color: var(--accent-color); }
+
+        /* Language Toggle Button */
+        .lang-btn {
+            color: var(--accent-color);
+            font-weight: 900;
+            cursor: pointer;
+            border: 1px solid #333;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            transition: 0.3s;
+            text-transform: uppercase;
+        }
+        .lang-btn:hover { background: #1a1a1a; border-color: var(--accent-color); }
 
         .game-hero {
             height: 75vh;
@@ -74,47 +99,65 @@
             <img src="images/aBRcFxAs_400x400.png" alt="Revolt">
             Revolt <span>Entertainment</span>
         </a>
-        <div style="display: flex; gap: 20px;">
-            <a href="index.html" style="color: #888; text-decoration: none; font-size: 0.8rem; font-weight: 700; text-transform: uppercase;">Back</a>
+        <div style="display: flex; gap: 20px; align-items: center;">
+            <a href="index.html" class="tr" data-en="Back" data-ka="უკან" style="color: #888; text-decoration: none; font-size: 0.8rem; font-weight: 700; text-transform: uppercase;">Back</a>
+            <div class="lang-btn" onclick="toggleLanguage()" id="lang-switcher">KA</div>
         </div>
     </nav>
 
     <div class="game-hero">
-        <h1 class="reveal active">The Seven Enchantments</h1>
+        <h1 class="reveal active tr" data-en="The Seven Enchantments" data-ka="The Seven Enchantments">The Seven Enchantments</h1>
     </div>
 
     <div class="container">
         <div class="lore-grid">
             <div class="lore-section reveal">
-                <h2>Deep New Story</h2>
-                <h3>A Familiar Unfamiliarity</h3>
-                <p>The seven deadly sins, some revel in them and some suffer in them, but in the end, they meet a similar fate. Access of something will change, twist, and curse them all.</p>
-                <p>Uncover the stories of the main characters of Pradonin and their relationships with each other, the village, and what lurks within. Who is behind all this, and why? Or is the village even abandoned? As you look into the shadows, some of them might look back.</p>
+                <h2 class="tr" data-en="Deep New Story" data-ka="ღრმა ახალი ისტორია">Deep New Story</h2>
+                <h3 class="tr" data-en="A Familiar Unfamiliarity" data-ka="ნაცნობი უცნაურობა">A Familiar Unfamiliarity</h3>
+                <p class="tr" 
+                   data-en="The seven deadly sins, some revel in them and some suffer in them, but in the end, they meet a similar fate. Access of something will change, twist, and curse them all."
+                   data-ka="შვიდი მომაკვდინებელი ცოდვა... ზოგი ტკბება მათით, ზოგი კი იტანჯება, თუმცა საბოლოოდ ყველას მსგავსი ბედი ელის. გადაჭარბება ყველაფერს ცვლის, ამახინჯებს და წყევლის.">
+                   The seven deadly sins, some revel in them and some suffer in them, but in the end, they meet a similar fate. Access of something will change, twist, and curse them all.
+                </p>
+                <p class="tr" 
+                   data-en="Uncover the stories of the main characters of Pradonin and their relationships with each other, the village, and what lurks within. Who is behind all this, and why? Or is the village even abandoned? As you look into the shadows, some of them might look back."
+                   data-ka="აღმოაჩინეთ პრადონინის მთავარი პერსონაჟების ისტორიები, მათი ურთიერთობები ერთმანეთთან და სოფელთან, სადაც რაღაც იმალება. ვინ დგას ამ ყველაფრის უკან და რატომ? ან არის კი სოფელი მართლა მიტოვებული? როცა სიბნელეში იყურები, გახსოვდეს - სიბნელემ შეიძლება უკან გამოგხედოს.">
+                   Uncover the stories of the main characters of Pradonin and their relationships with each other, the village, and what lurks within. Who is behind all this, and why? Or is the village even abandoned? As you look into the shadows, some of them might look back.
+                </p>
             </div>
             <div class="lore-section reveal">
-                <h2>Investigation</h2>
-                <h3>Characters & Secrets</h3>
-                <p><strong>Discover the characters:</strong> Seven characters, seven stories, look for the clues and learn of it all. What you learn may not be what you envisioned, but Józef needs to get to the bottom of it all.</p>
-                <p><strong>Discover the secrets:</strong> Under a rock or behind a tree, one can see a story in a lot of places, but are you ready to see how the story ends?</p>
+                <h2 class="tr" data-en="Investigation" data-ka="გამოძიება">Investigation</h2>
+                <h3 class="tr" data-en="Characters & Secrets" data-ka="პერსონაჟები და საიდუმლოებები">Characters & Secrets</h3>
+                <p class="tr" 
+                   data-en="<strong>Discover the characters:</strong> Seven characters, seven stories, look for the clues and learn of it all. What you learn may not be what you envisioned, but Józef needs to get to the bottom of it all."
+                   data-ka="<strong>აღმოაჩინე პერსონაჟები:</strong> შვიდი პერსონაჟი, შვიდი ისტორია. მოძებნე სამხილები და გაიგე სიმართლე. ის რასაც გაიგებ, შეიძლება არ იყოს ის, რასაც ელოდი, მაგრამ იოზეფმა სიმართლე უნდა გაარკვიოს.">
+                   <strong>Discover the characters:</strong> Seven characters, seven stories, look for the clues and learn of it all. What you learn may not be what you envisioned, but Józef needs to get to the bottom of it all.
+                </p>
+                <p class="tr" 
+                   data-en="<strong>Discover the secrets:</strong> Under a rock or behind a tree, one can see a story in a lot of places, but are you ready to see how the story ends?"
+                   data-ka="<strong>აღმოაჩინე საიდუმლოებები:</strong> ქვის ქვეშ თუ ხის უკან, ისტორია ყველგან იმალება, მაგრამ მზად ხარ ნახო როგორ მთავრდება ის?">
+                   <strong>Discover the secrets:</strong> Under a rock or behind a tree, one can see a story in a lot of places, but are you ready to see how the story ends?
+                </p>
             </div>
         </div>
     </div>
 
     <section class="video-section">
         <div class="container">
-            <h2 style="text-transform: uppercase; letter-spacing: 2px; color: var(--accent-color); font-size: 0.8rem;">Official Trailers</h2>
+            <h2 class="tr" style="text-transform: uppercase; letter-spacing: 2px; color: var(--accent-color); font-size: 0.8rem;" 
+                data-en="Official Trailers" data-ka="ოფიციალური ტრეილერები">Official Trailers</h2>
             <div class="video-grid">
                 <div class="reveal">
                     <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/Ei02vnSpvjs" frameborder="0" allowfullscreen></iframe></div>
-                    <p style="margin-top:15px; font-weight: bold;">Launch Trailer</p>
+                    <p class="tr" style="margin-top:15px; font-weight: bold;" data-en="Launch Trailer" data-ka="გაშვების ტრეილერი">Launch Trailer</p>
                 </div>
                 <div class="reveal">
                     <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/nhceq4Z2VOs" frameborder="0" allowfullscreen></iframe></div>
-                    <p style="margin-top:15px; font-weight: bold;">Gameplay Trailer</p>
+                    <p class="tr" style="margin-top:15px; font-weight: bold;" data-en="Gameplay Trailer" data-ka="გეიმფლეი ტრეილერი">Gameplay Trailer</p>
                 </div>
                 <div class="reveal">
                     <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/w_VbZcALNa8" frameborder="0" allowfullscreen></iframe></div>
-                    <p style="margin-top:15px; font-weight: bold;">Reveal Trailer</p>
+                    <p class="tr" style="margin-top:15px; font-weight: bold;" data-en="Reveal Trailer" data-ka="ანონსის ტრეილერი">Reveal Trailer</p>
                 </div>
             </div>
         </div>
@@ -122,20 +165,32 @@
 
     <div class="container">
         <div class="lore-section reveal">
-            <h2>Gameplay & Features</h2>
-            <h3>Atmospheric Folk Horror</h3>
+            <h2 class="tr" data-en="Gameplay & Features" data-ka="გეიმფლეი და მახასიათებლები">Gameplay & Features</h2>
+            <h3 class="tr" data-en="Atmospheric Folk Horror" data-ka="ატმოსფერული ფოლკ ჰორორი">Atmospheric Folk Horror</h3>
             <div class="features-list">
                 <div class="feature-item">
-                    <strong>Explore Pradonin</strong>
-                    <p>Navigate dense forests, forgotten chapels, and decaying huts, each connected to a different character's sin in a richly detailed Unreal Engine 5 world.</p>
+                    <strong class="tr" data-en="Explore Pradonin" data-ka="გამოიკვლიე პრადონინი">Explore Pradonin</strong>
+                    <p class="tr" 
+                       data-en="Navigate dense forests, forgotten chapels, and decaying huts, each connected to a different character's sin in a richly detailed Unreal Engine 5 world."
+                       data-ka="გამოიკვლიეთ ხშირი ტყეები, დავიწყებული სამლოცველოები და დანგრეული ქოხები. Unreal Engine 5-ში შექმნილი სამყარო, სადაც თითოეული ადგილი პერსონაჟების ცოდვებს უკავშირდება.">
+                       Navigate dense forests, forgotten chapels, and decaying huts, each connected to a different character's sin in a richly detailed Unreal Engine 5 world.
+                    </p>
                 </div>
                 <div class="feature-item">
-                    <strong>Day/Night Cycle</strong>
-                    <p>Day: Gather candles, ritual tools, and stealth aids. Night: Survive the hunt. The Leshy roams. Sound and light are your enemies—or your only hope.</p>
+                    <strong class="tr" data-en="Day/Night Cycle" data-ka="დღე/ღამის ციკლი">Day/Night Cycle</strong>
+                    <p class="tr" 
+                       data-en="Day: Gather candles, ritual tools, and stealth aids. Night: Survive the hunt. The Leshy roams. Sound and light are your enemies—or your only hope."
+                       data-ka="დღე: შეაგროვეთ სანთლები და რიტუალური ნივთები. ღამე: გადარჩით ნადირობას. ლეში დაძრწის. ხმა და სინათლე თქვენი მტრები არიან, ან ერთადერთი იმედი.">
+                       Day: Gather candles, ritual tools, and stealth aids. Night: Survive the hunt. The Leshy roams. Sound and light are your enemies—or your only hope.
+                    </p>
                 </div>
                 <div class="feature-item">
-                    <strong>3D Audio Experience</strong>
-                    <p>Built for immersion. Headphones are recommended—the Leshy hears everything. Find journal entries and cursed relics to uncover the downfall.</p>
+                    <strong class="tr" data-en="3D Audio Experience" data-ka="3D აუდიო გამოცდილება">3D Audio Experience</strong>
+                    <p class="tr" 
+                       data-en="Built for immersion. Headphones are recommended—the Leshy hears everything. Find journal entries and cursed relics to uncover the downfall."
+                       data-ka="შექმნილია სრული ჩართულობისთვის. რეკომენდებულია ყურსასმენები — ლეშის ყველაფერი ესმის. იპოვეთ დღიურები და დაწყევლილი რელიქვიები ისტორიის გასაშიფრად.">
+                       Built for immersion. Headphones are recommended—the Leshy hears everything. Find journal entries and cursed relics to uncover the downfall.
+                    </p>
                 </div>
             </div>
         </div>
@@ -156,6 +211,28 @@
     </footer>
 
     <script>
+        // --- TRANSLATION LOGIC ---
+        function toggleLanguage() {
+            const btn = document.getElementById('lang-switcher');
+            const currentLang = btn.innerText === "KA" ? "ka" : "en";
+            
+            document.querySelectorAll('.tr').forEach(el => {
+                const text = el.getAttribute(`data-${currentLang}`);
+                if (text) el.innerHTML = text; // innerHTML allows bold tags to render
+            });
+
+            btn.innerText = (currentLang === "ka") ? "EN" : "KA";
+            localStorage.setItem('selected-lang', currentLang);
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('selected-lang');
+            if (savedLang === 'ka') {
+                toggleLanguage();
+            }
+        });
+
+        // --- SCROLL ANIMATION ---
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) entry.target.classList.add('active');

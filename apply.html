@@ -5,14 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Apply Now | Revolt Academy</title>
     <link rel="icon" type="image/png" href="images/aBRcFxAs_400x400.png">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@100..900&display=swap" rel="stylesheet">
+
     <style>
         :root {
             --bg-color: #050505;
             --text-color: #e0e0e0;
             --accent-color: #8a1c1c; 
             --input-bg: #121212;
-            --font-main: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            /* UPDATED FONT STACK */
+            --font-main: "Noto Sans Georgian", "Helvetica Neue", Helvetica, Arial, sans-serif;
             --nav-height: 70px;
         }
 
@@ -34,6 +41,21 @@
         .logo { font-size: 1.2rem; font-weight: 700; text-transform: uppercase; display: flex; align-items: center; gap: 10px; text-decoration: none; color: white; }
         .logo img { height: 30px; border-radius: 4px; }
         .logo span { color: var(--accent-color); }
+
+        .nav-right { display: flex; gap: 20px; align-items: center; }
+        
+        .lang-btn {
+            color: var(--accent-color);
+            font-weight: 900;
+            cursor: pointer;
+            border: 1px solid #333;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            transition: 0.3s;
+            text-transform: uppercase;
+        }
+        .lang-btn:hover { background: #1a1a1a; border-color: var(--accent-color); }
 
         .form-container { 
             max-width: 550px; 
@@ -94,49 +116,63 @@
             <img src="images/aBRcFxAs_400x400.png" alt="Revolt">
             Revolt <span>Academy</span>
         </a>
-        <a href="academy.html" style="color: #888; text-decoration: none; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">&larr; Back to Courses</a>
+        <div class="nav-right">
+            <a href="academy.html" class="tr" data-en="&larr; Back to Courses" data-ka="&larr; კურსებზე დაბრუნება" style="color: #888; text-decoration: none; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">&larr; Back to Courses</a>
+            <div class="lang-btn" onclick="toggleLanguage()" id="lang-switcher">KA</div>
+        </div>
     </nav>
 
     <div class="form-container">
-        <h2>Apply Now</h2>
-        <p class="subtitle">Join the Revolt Entertainment ecosystem</p>
+        <h2 class="tr" data-en="Apply Now" data-ka="რეგისტრაცია">Apply Now</h2>
+        <p class="subtitle tr" data-en="Join the Revolt Entertainment ecosystem" data-ka="შემოუერთდი Revolt Entertainment-ის ეკოსისტემას">Join the Revolt Entertainment ecosystem</p>
         
         <form action="https://formspree.io/f/xkowrgjg" method="POST">
             
             <div class="form-group">
-                <label>Selected Discipline</label>
+                <label class="tr" data-en="Selected Discipline" data-ka="არჩეული მიმართულება">Selected Discipline</label>
                 <select name="Course_Type" class="form-control" required>
-                    <option value="" disabled selected>Select your course</option>
-                    <option value="3D Environment Art">3D Environment Art (300 GEL/mo)</option>
-                    <option value="Gameplay Programming">Gameplay Programming (300 GEL/mo)</option>
-                    <option value="Animation">Animation Course (300 GEL/mo)</option>
-                    <option value="Kids Academy">Kids Academy (300 GEL/mo)</option>
+                    <option value="" disabled selected class="tr" data-en="Select your course" data-ka="აირჩიეთ კურსი">Select your course</option>
+                    <option value="3D Environment Art" class="tr" data-en="3D Environment Art (300 GEL/mo)" data-ka="3D გარემოს დიზაინი (300 ₾/თვე)">3D Environment Art (300 GEL/mo)</option>
+                    <option value="Gameplay Programming" class="tr" data-en="Gameplay Programming (300 GEL/mo)" data-ka="გეიმფლეი პროგრამირება (300 ₾/თვე)">Gameplay Programming (300 GEL/mo)</option>
+                    <option value="Animation" class="tr" data-en="Animation Course (300 GEL/mo)" data-ka="ანიმაციის კურსი (300 ₾/თვე)">Animation Course (300 GEL/mo)</option>
                 </select>
             </div>
 
             <div class="form-group">
-                <label>Full Name</label>
-                <input type="text" name="Student_Name" class="form-control" placeholder="John Doe" required>
+                <label class="tr" data-en="Full Name" data-ka="სახელი და გვარი">Full Name</label>
+                <input type="text" name="Student_Name" class="form-control tr-ph" 
+                       placeholder="John Doe" 
+                       data-en-ph="John Doe" 
+                       data-ka-ph="სახელი გვარი" required>
             </div>
 
             <div class="form-group">
-                <label>Contact Email</label>
-                <input type="email" name="Student_Email" class="form-control" placeholder="example@email.com" required>
+                <label class="tr" data-en="Contact Email" data-ka="ელ. ფოსტა">Contact Email</label>
+                <input type="email" name="Student_Email" class="form-control tr-ph" 
+                       placeholder="example@email.com" 
+                       data-en-ph="example@email.com" 
+                       data-ka-ph="example@email.com" required>
             </div>
 
             <div class="form-group">
-                <label>Phone Number</label>
-                <input type="tel" name="Student_Phone" class="form-control" placeholder="+995 5__ ___ ___" required>
+                <label class="tr" data-en="Phone Number" data-ka="ტელეფონის ნომერი">Phone Number</label>
+                <input type="tel" name="Student_Phone" class="form-control tr-ph" 
+                       placeholder="+995 5__ ___ ___" 
+                       data-en-ph="+995 5__ ___ ___" 
+                       data-ka-ph="+995 5__ ___ ___" required>
             </div>
 
             <div class="form-group">
-                <label>Personal Note (Optional)</label>
-                <textarea name="Application_Message" class="form-control" rows="4" placeholder="Tell us about your experience or goals..."></textarea>
+                <label class="tr" data-en="Personal Note (Optional)" data-ka="პირადი შენიშვნა (არასავალდებულო)">Personal Note (Optional)</label>
+                <textarea name="Application_Message" class="form-control tr-ph" rows="4" 
+                          placeholder="Tell us about your experience or goals..." 
+                          data-en-ph="Tell us about your experience or goals..." 
+                          data-ka-ph="მოგვიყევით თქვენი გამოცდილების ან მიზნების შესახებ..."></textarea>
             </div>
 
             <input type="hidden" name="_subject" value="New Academy Application - Revolt Entertainment">
 
-            <button type="submit" class="submit-btn">Submit Application</button>
+            <button type="submit" class="submit-btn tr" data-en="Submit Application" data-ka="განაცხადის გაგზავნა">Submit Application</button>
         </form>
     </div>
 
@@ -144,5 +180,34 @@
         REVOLT ENTERTAINMENT &copy; 2025 | TBILISI, GEORGIA
     </footer>
 
+    <script>
+        // --- TRANSLATION LOGIC ---
+        function toggleLanguage() {
+            const btn = document.getElementById('lang-switcher');
+            const currentLang = btn.innerText === "KA" ? "ka" : "en";
+            
+            // 1. Handle standard Text Elements
+            document.querySelectorAll('.tr').forEach(el => {
+                const text = el.getAttribute(`data-${currentLang}`);
+                if (text) el.innerHTML = text;
+            });
+
+            // 2. Handle Inputs with Placeholders
+            document.querySelectorAll('.tr-ph').forEach(el => {
+                const phText = el.getAttribute(`data-${currentLang}-ph`);
+                if (phText) el.placeholder = phText;
+            });
+
+            btn.innerText = (currentLang === "ka") ? "EN" : "KA";
+            localStorage.setItem('selected-lang', currentLang);
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('selected-lang');
+            if (savedLang === 'ka') {
+                toggleLanguage();
+            }
+        });
+    </script>
 </body>
 </html>
