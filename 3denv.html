@@ -6,24 +6,8 @@
     
     <title>Revolt Entertainment | Georgian Game Development Studio</title>
     <meta name="description" content="Revolt Entertainment is a premium game development studio in Tbilisi, Georgia, crafting atmospheric folk horror experiences. Creators of The Seven Enchantments.">
-    <meta name="keywords" content="Game Development Georgia, Tbilisi Game Studio, Unreal Engine 5, Folk Horror, Indie Games, Revolt Entertainment, The Seven Enchantments">
-    <meta name="author" content="Revolt Entertainment">
-    <meta name="robots" content="index, follow">
-
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://revoltentertainment.com/"> <meta property="og:title" content="Revolt Entertainment | Uncover the Darkness">
-    <meta property="og:description" content="A premium Georgian game development studio crafting high-atmosphere horror experiences.">
-    <meta property="og:image" content="https://revoltentertainment.com/images/Key Visual 1920x1080.png"> <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://revoltentertainment.com/">
-    <meta property="twitter:title" content="Revolt Entertainment | Georgian Game Studio">
-    <meta property="twitter:description" content="Creators of The Seven Enchantments. Join us in uncovering the darkness.">
-    <meta property="twitter:image" content="https://revoltentertainment.com/images/Key Visual 1920x1080.png">
-
-    <link rel="icon" type="image/png" href="images/aBRcFxAs_400x400.png">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@100..900&display=swap" rel="stylesheet">
-
-    <link rel="icon" type="image/png" href="images/aBRcFxAs_400x400.png">
     
+    <link rel="icon" type="image/png" href="images/aBRcFxAs_400x400.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,13 +17,14 @@
     <style>
         :root {
             --bg-color: #050505;
+            --section-alt-bg: #0a0a0a;
             --text-color: #e0e0e0;
             --accent-color: #8a1c1c; 
             --accent-glow: rgba(138, 28, 28, 0.4);
             --gold-accent: #ffd700;
             --gold-glow: rgba(255, 215, 0, 0.2);
             --glass-bg: rgba(20, 20, 20, 0.7);
-            /* UPDATED FONT STACK */
+            --glass-border: rgba(255, 255, 255, 0.05);
             --font-main: "Noto Sans Georgian", "Helvetica Neue", Helvetica, Arial, sans-serif;
             --nav-height: 70px;
         }
@@ -48,15 +33,31 @@
         
         body { 
             background-color: var(--bg-color);
-            background-image: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.9)), url('images/academy-bg.jpg'); 
-            background-size: cover; background-position: center; background-attachment: fixed;
-            color: var(--text-color); font-family: var(--font-main); line-height: 1.6; 
+            background-image: linear-gradient(rgba(5,5,5,0.92), rgba(5,5,5,0.95)), url('images/academy-bg.jpg'); 
+            background-size: cover; 
+            background-position: center; 
+            background-attachment: fixed;
+            color: var(--text-color); 
+            font-family: var(--font-main); 
+            line-height: 1.6; 
+            overflow-x: hidden;
         }
+
+        /* --- UTILITY CLASSES --- */
+        .section-title { font-size: 2rem; font-weight: 800; text-transform: uppercase; margin-bottom: 40px; text-align: center; color: #fff; }
+        .section-title span { color: var(--accent-color); }
+        .container-fluid { max-width: 1200px; margin: 0 auto; padding: 80px 20px; }
+        .alt-bg { background-color: var(--section-alt-bg); border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border); }
+        
+        /* Scroll Animation */
+        .fade-in-up { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+        .fade-in-up.visible { opacity: 1; transform: translateY(0); }
 
         /* --- NAV --- */
         nav { display: flex; justify-content: space-between; align-items: center; padding: 0 5%; background: rgba(5, 5, 5, 0.95); backdrop-filter: blur(10px); position: fixed; width: 100%; height: var(--nav-height); top: 0; z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.1); }
-        .logo { font-size: 1.2rem; font-weight: 700; text-transform: uppercase; display: flex; align-items: center; gap: 10px; text-decoration: none; color: white; }
-        .logo img { height: 30px; border-radius: 4px; }
+        .logo { font-size: 1.2rem; font-weight: 700; text-transform: uppercase; display: flex; align-items: center; gap: 10px; text-decoration: none; color: white; transition: 0.3s; }
+        .logo:hover { opacity: 0.8; }
+        .logo img { height: 30px; border-radius: 4px; background: #333; }
         .logo span { color: var(--accent-color); }
         
         .nav-right { display: flex; gap: 20px; align-items: center; }
@@ -65,175 +66,202 @@
 
         /* Language Toggle Button */
         .lang-btn {
-            color: var(--accent-color);
-            font-weight: 900;
-            cursor: pointer;
-            border: 1px solid #333;
-            padding: 5px 10px;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            transition: 0.3s;
-            text-transform: uppercase;
+            color: var(--accent-color); font-weight: 900; cursor: pointer; border: 1px solid #333;
+            padding: 5px 10px; border-radius: 4px; font-size: 0.75rem; transition: 0.3s; text-transform: uppercase;
         }
         .lang-btn:hover { background: #1a1a1a; border-color: var(--accent-color); }
 
         /* --- HERO SECTION --- */
         header {
-            padding: 150px 20px 80px;
+            padding: 180px 20px 100px;
             text-align: center;
             background: radial-gradient(circle at center, rgba(138, 28, 28, 0.15) 0%, transparent 70%);
         }
-        
-        h1 { font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 900; text-transform: uppercase; margin-bottom: 15px; line-height: 1.1; }
+        h1 { font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 900; text-transform: uppercase; margin-bottom: 15px; line-height: 1.1; color: #fff; text-shadow: 0 5px 15px rgba(0,0,0,0.5); }
         .subtitle { font-size: 1.2rem; color: #aaa; max-width: 700px; margin: 0 auto 30px; }
 
         .meta-tags { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-bottom: 30px; }
-        .tag { background: rgba(255,255,255,0.05); padding: 8px 16px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.1); font-size: 0.8rem; font-weight: 700; color: #ccc; display: flex; align-items: center; gap: 8px; }
+        .tag { background: rgba(255,255,255,0.05); padding: 8px 16px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.1); font-size: 0.8rem; font-weight: 700; color: #ccc; display: flex; align-items: center; gap: 8px; backdrop-filter: blur(5px); }
         .tag i { color: var(--accent-color); }
 
+        /* --- 1. INSTRUCTOR SECTION --- */
+        .instructor-section { padding: 60px 20px; border-bottom: 1px solid var(--glass-border); background: linear-gradient(180deg, transparent, rgba(138, 28, 28, 0.03)); }
+        .instructor-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 300px 1fr; gap: 40px; align-items: center; }
+        .instructor-photo { width: 100%; aspect-ratio: 3/4; background: #1a1a1a; border-radius: 12px; position: relative; overflow: hidden; border: 1px solid var(--glass-border); box-shadow: 0 20px 40px rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; }
+        .instructor-photo i { font-size: 5rem; color: #333; }
+        .instructor-photo::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 50%; background: linear-gradient(transparent, var(--bg-color)); }
+        .instructor-info h2 { font-size: 2.2rem; font-weight: 800; color: #fff; margin-bottom: 5px; text-transform: uppercase; }
+        .instructor-title { color: var(--accent-color); font-weight: 700; font-size: 1.1rem; margin-bottom: 20px; display: inline-block; padding: 4px 12px; background: rgba(138, 28, 28, 0.1); border-radius: 4px; border: 1px solid rgba(138, 28, 28, 0.2); }
+        .instructor-bio { color: #aaa; margin-bottom: 30px; font-size: 1.05rem; }
+        .instructor-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 15px; margin-bottom: 30px; }
+        .stat-card { background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); padding: 15px; border-radius: 8px; text-align: center; }
+        .stat-num { font-size: 1.8rem; font-weight: 900; color: #fff; }
+        .stat-label { font-size: 0.8rem; color: #888; text-transform: uppercase; font-weight: 700; }
+        .experience-cards { display: flex; gap: 15px; flex-wrap: wrap; }
+        .exp-badge { display: flex; align-items: center; gap: 10px; background: rgba(0,0,0,0.5); border: 1px solid #333; padding: 10px 15px; border-radius: 6px; font-size: 0.9rem; color: #ccc; }
+        .exp-badge i { color: var(--accent-color); }
+
         /* --- MAIN CONTENT LAYOUT --- */
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px 100px; display: grid; grid-template-columns: 2fr 1fr; gap: 40px; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 60px 20px 100px; display: grid; grid-template-columns: 2fr 1fr; gap: 50px; }
 
         /* Left Column */
-        .content-box { margin-bottom: 40px; }
-        .content-box h2 { font-size: 1.5rem; text-transform: uppercase; color: #fff; margin-bottom: 20px; border-left: 3px solid var(--accent-color); padding-left: 15px; }
-        .content-box p { color: #ccc; margin-bottom: 15px; font-size: 1rem; }
+        .content-box { margin-bottom: 60px; }
+        .content-box h2 { font-size: 1.8rem; text-transform: uppercase; color: #fff; margin-bottom: 25px; border-left: 4px solid var(--accent-color); padding-left: 15px; }
+        .content-box p { color: #ccc; margin-bottom: 15px; font-size: 1.05rem; }
 
-        /* CAROUSEL STYLES */
-        .carousel-wrapper {
-            margin-bottom: 40px;
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 8px;
-            background: #000;
-            padding: 10px;
-        }
-        .carousel-container {
-            position: relative;
-            width: 100%;
-            height: 400px; 
-            overflow: hidden;
-            border-radius: 4px;
-        }
-        .slide {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-size: cover; background-position: center;
-            opacity: 0; transition: opacity 0.8s ease;
-        }
-        .slide.active { opacity: 1; }
-        
-        .carousel-dots {
-            display: flex; justify-content: center; gap: 10px; margin-top: 15px;
-        }
-        .dot {
-            width: 10px; height: 10px; background: #333; border-radius: 50%; cursor: pointer; transition: 0.3s;
-        }
-        .dot.active { background: var(--accent-color); box-shadow: 0 0 10px var(--accent-glow); }
+        /* --- 2. STUDENT OUTCOMES (Cards) --- */
+        .outcomes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+        .outcome-card { background: var(--glass-bg); border: 1px solid var(--glass-border); padding: 25px 20px; border-radius: 10px; text-align: center; transition: 0.4s; }
+        .outcome-card:hover { transform: translateY(-5px); border-color: rgba(255,255,255,0.2); background: rgba(30, 30, 30, 0.8); }
+        .outcome-icon { font-size: 2rem; color: var(--accent-color); margin-bottom: 15px; transition: 0.3s; }
+        .outcome-card:hover .outcome-icon { transform: scale(1.1); text-shadow: 0 0 15px var(--accent-glow); }
+        .outcome-card h3 { color: #fff; font-size: 1.1rem; margin-bottom: 10px; }
+        .outcome-card p { color: #888; font-size: 0.9rem; margin: 0; line-height: 1.4; }
 
-        /* Syllabus Accordion */
-        .module { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); margin-bottom: 10px; border-radius: 8px; overflow: hidden; }
-        .module-header { padding: 15px 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 700; color: #fff; transition: 0.3s; }
-        .module-header:hover { background: rgba(255,255,255,0.05); }
-        .module-content { padding: 20px; border-top: 1px solid rgba(255,255,255,0.05); color: #aaa; font-size: 0.9rem; }
+        /* --- 3. SOFTWARE SECTION --- */
+        .software-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; }
+        .software-card { display: flex; align-items: center; gap: 15px; background: rgba(0,0,0,0.4); border: 1px solid var(--glass-border); padding: 15px; border-radius: 8px; transition: 0.3s; }
+        .software-card:hover { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); }
+        .software-logo { width: 40px; height: 40px; background: #222; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: #fff; }
+        .software-info h4 { color: #fff; font-size: 0.95rem; margin-bottom: 3px; }
+        .software-info p { color: #666; font-size: 0.75rem; margin: 0; }
+
+        /* --- 4. 12-MONTH ROADMAP TIMELINE --- */
+        .roadmap-timeline { position: relative; margin-top: 30px; padding-left: 30px; border-left: 2px solid rgba(255,255,255,0.1); }
+        .roadmap-item { position: relative; margin-bottom: 40px; }
+        .roadmap-item:last-child { margin-bottom: 0; }
+        .roadmap-item::before { content: ''; position: absolute; left: -37px; top: 5px; width: 12px; height: 12px; background: var(--bg-color); border: 2px solid var(--accent-color); border-radius: 50%; box-shadow: 0 0 10px var(--accent-glow); z-index: 2; transition: 0.3s; }
+        .roadmap-item:hover::before { background: var(--accent-color); transform: scale(1.2); }
         
-        /* Sidebar */
+        .roadmap-month { display: inline-block; font-size: 0.8rem; font-weight: 800; color: var(--accent-color); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; background: rgba(138,28,28,0.1); padding: 3px 8px; border-radius: 4px; }
+        .roadmap-content { background: rgba(255,255,255,0.02); border: 1px solid var(--glass-border); border-radius: 8px; padding: 20px; transition: 0.3s; }
+        .roadmap-item:hover .roadmap-content { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); }
+        .roadmap-content h3 { color: #fff; font-size: 1.2rem; margin-bottom: 10px; }
+        
+        .roadmap-details { display: grid; grid-template-columns: 1fr; gap: 10px; margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.05); }
+        .rd-row { display: flex; align-items: flex-start; gap: 10px; font-size: 0.9rem; }
+        .rd-row i { color: #888; margin-top: 4px; width: 16px; text-align: center; }
+        .rd-row span { color: #bbb; }
+        .rd-row strong { color: #eee; }
+
+        /* Sidebar Pricing / Info */
         .sidebar { position: sticky; top: 100px; height: fit-content; }
         .enroll-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255,255,255,0.1);
-            padding: 30px;
-            border-radius: 12px;
-            text-align: center;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-            margin-bottom: 25px;
+            background: var(--glass-bg); backdrop-filter: blur(15px); border: 1px solid var(--glass-border);
+            padding: 30px; border-radius: 12px; text-align: center; box-shadow: 0 20px 40px rgba(0,0,0,0.5); margin-bottom: 25px;
         }
-        
         .price { font-size: 2.5rem; font-weight: 900; color: #fff; margin: 10px 0; }
         .price span { font-size: 1rem; color: #777; font-weight: 500; }
 
-        /* SPECIAL OFFER */
-        .special-offer {
-            background: linear-gradient(135deg, rgba(138, 28, 28, 0.2), rgba(0, 0, 0, 0.4));
-            border: 1px solid var(--accent-color);
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 20px;
-        }
-        .offer-badge {
-            font-size: 0.7rem; background: var(--accent-color); color: #fff; 
-            padding: 4px 8px; border-radius: 4px; text-transform: uppercase; 
-            font-weight: 800; display: inline-block; margin-bottom: 5px;
-        }
+        .special-offer { background: linear-gradient(135deg, rgba(138, 28, 28, 0.2), rgba(0, 0, 0, 0.4)); border: 1px solid var(--accent-color); border-radius: 8px; padding: 15px; margin-bottom: 20px; }
+        .offer-badge { font-size: 0.7rem; background: var(--accent-color); color: #fff; padding: 4px 8px; border-radius: 4px; text-transform: uppercase; font-weight: 800; display: inline-block; margin-bottom: 5px; }
         .old-price { text-decoration: line-through; color: #777; font-size: 0.9rem; margin-right: 5px; }
         .new-price { font-size: 1.4rem; color: #fff; font-weight: 900; }
         
-        .btn { 
-            display: block; width: 100%; padding: 16px; margin-top: 20px;
-            background: var(--accent-color); color: #fff; text-decoration: none; 
-            font-weight: 800; text-transform: uppercase; border-radius: 4px; transition: 0.3s; 
-        }
+        .btn { display: block; width: 100%; padding: 16px; margin-top: 20px; background: var(--accent-color); color: #fff; text-decoration: none; font-weight: 800; text-transform: uppercase; border-radius: 4px; transition: 0.3s; border: none; cursor: pointer; text-align: center; }
         .btn:hover { background: #6b1515; box-shadow: 0 0 20px var(--accent-glow); }
 
         .info-list { margin-top: 25px; text-align: left; }
-        .info-item { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 0.9rem; color: #aaa; }
+        .info-item { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--glass-border); font-size: 0.9rem; color: #aaa; }
 
-        /* --- SHINY JOB HIGHLIGHT --- */
-        .job-highlight {
-            position: relative;
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.05), rgba(0,0,0,0.6)); /* Gold tint */
-            border: 1px solid rgba(255, 215, 0, 0.3); /* Gold Border */
-            padding: 25px;
-            border-radius: 12px;
-            text-align: left;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
+        .job-highlight { position: relative; background: linear-gradient(135deg, rgba(255, 215, 0, 0.05), rgba(0,0,0,0.6)); border: 1px solid rgba(255, 215, 0, 0.3); padding: 25px; border-radius: 12px; text-align: left; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .job-highlight::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent); transform: skewX(-20deg); animation: shine 4s infinite linear; pointer-events: none; }
+        @keyframes shine { 0% { left: -100%; } 50% { left: 200%; } 100% { left: 200%; } }
+        .job-icon { font-size: 1.8rem; color: var(--gold-accent); margin-bottom: 15px; text-shadow: 0 0 15px var(--gold-glow); }
+        .job-title { color: #fff; font-weight: 800; text-transform: uppercase; font-size: 1rem; margin-bottom: 10px; letter-spacing: 1px; }
+
+        /* --- 5. PORTFOLIO GALLERY --- */
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .gallery-item { position: relative; border-radius: 10px; overflow: hidden; aspect-ratio: 16/9; background: #111; cursor: pointer; border: 1px solid var(--glass-border); }
+        .gallery-placeholder { width: 100%; height: 100%; background: linear-gradient(45deg, #1a1a1a, #0a0a0a); display: flex; align-items: center; justify-content: center; transition: 0.5s transform; }
+        .gallery-placeholder i { font-size: 3rem; color: #333; transition: 0.3s; }
+        .gallery-overlay { position: absolute; inset: 0; background: rgba(138, 28, 28, 0.8); display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: 0; transition: 0.4s; backdrop-filter: blur(3px); }
+        .gallery-overlay h3 { color: #fff; font-size: 1.2rem; transform: translateY(20px); transition: 0.4s; text-transform: uppercase; letter-spacing: 1px; }
+        .gallery-item:hover .gallery-placeholder { transform: scale(1.05); }
+        .gallery-item:hover .gallery-overlay { opacity: 1; }
+        .gallery-item:hover .gallery-overlay h3 { transform: translateY(0); }
+
+        /* --- 6. WHY REVOLT ACADEMY --- */
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; }
+        .feature-card { padding: 30px 20px; background: rgba(255,255,255,0.02); border: 1px solid var(--glass-border); border-radius: 12px; text-align: center; transition: 0.3s; }
+        .feature-card:hover { background: rgba(255,255,255,0.05); transform: translateY(-5px); border-color: rgba(255,255,255,0.1); }
+        .feature-icon { width: 60px; height: 60px; background: rgba(138, 28, 28, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: var(--accent-color); margin: 0 auto 20px; transition: 0.3s; }
+        .feature-card:hover .feature-icon { background: var(--accent-color); color: #fff; box-shadow: 0 0 15px var(--accent-glow); }
+        .feature-card h3 { color: #fff; font-size: 1.1rem; margin-bottom: 10px; }
+        .feature-card p { color: #888; font-size: 0.9rem; }
+
+        /* --- 7. FAQ SECTION --- */
+        .faq-container { max-width: 800px; margin: 0 auto; }
+        .faq-item { margin-bottom: 15px; border: 1px solid var(--glass-border); border-radius: 8px; background: rgba(255,255,255,0.02); overflow: hidden; transition: 0.3s; }
+        .faq-item:hover { border-color: rgba(255,255,255,0.1); }
+        .faq-header { padding: 20px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; color: #fff; font-weight: 700; font-size: 1.05rem; }
+        .faq-header i { color: var(--accent-color); transition: 0.3s; }
+        .faq-content { padding: 0 20px; max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease; color: #aaa; font-size: 0.95rem; }
+        .faq-item.active .faq-header i { transform: rotate(180deg); }
+        .faq-item.active .faq-content { padding: 0 20px 20px; max-height: 200px; }
+
+        /* --- 8. STUDENT JOURNEY --- */
+        .journey-wrapper { display: flex; justify-content: space-between; align-items: flex-start; position: relative; margin-top: 60px; flex-wrap: wrap; gap: 30px; }
+        .journey-line { position: absolute; top: 40px; left: 5%; right: 5%; height: 2px; background: var(--glass-border); z-index: 1; }
+        .journey-step { text-align: center; flex: 1; min-width: 120px; position: relative; z-index: 2; }
+        .journey-icon { width: 80px; height: 80px; background: var(--bg-color); border: 2px solid var(--glass-border); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: #666; margin: 0 auto 20px; transition: 0.4s; }
+        .journey-step:hover .journey-icon { border-color: var(--accent-color); color: var(--accent-color); box-shadow: 0 0 20px var(--accent-glow); transform: scale(1.1); }
+        .journey-step h4 { color: #fff; font-size: 1rem; margin-bottom: 5px; }
+        .journey-step p { color: #777; font-size: 0.8rem; }
+
+        /* --- 9. TESTIMONIALS --- */
+        .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .testimonial-card { background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); padding: 30px; border-radius: 12px; position: relative; }
+        .testimonial-card i.fa-quote-right { position: absolute; top: 20px; right: 20px; font-size: 3rem; color: rgba(255,255,255,0.05); }
+        .testimonial-text { color: #ccc; font-style: italic; margin-bottom: 20px; font-size: 1rem; position: relative; z-index: 2; }
+        .testimonial-author { display: flex; align-items: center; gap: 15px; }
+        .author-avatar { width: 50px; height: 50px; background: #222; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #555; }
+        .author-info h4 { color: #fff; font-size: 1rem; }
+        .author-info span { color: var(--accent-color); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; }
+
+        /* --- 10. BETTER FOOTER --- */
+        footer { background: #000; border-top: 1px solid var(--glass-border); padding: 80px 20px 40px; }
+        .footer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 60px; }
+        .footer-about .logo { margin-bottom: 20px; display: inline-flex; }
+        .footer-about p { color: #888; font-size: 0.9rem; max-width: 300px; margin-bottom: 20px; }
+        .social-links { display: flex; gap: 15px; }
+        .social-links a { width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; color: #fff; text-decoration: none; transition: 0.3s; }
+        .social-links a:hover { background: var(--accent-color); transform: translateY(-3px); }
         
-        .job-highlight::before {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%;
-            width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
-            transform: skewX(-20deg);
-            animation: shine 4s infinite linear;
-            pointer-events: none;
-        }
+        .footer-col h4 { color: #fff; font-size: 1.1rem; text-transform: uppercase; margin-bottom: 25px; letter-spacing: 1px; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: #888; text-decoration: none; transition: 0.3s; font-size: 0.9rem; }
+        .footer-links a:hover { color: var(--accent-color); padding-left: 5px; }
+        
+        .contact-info li { display: flex; gap: 15px; color: #888; margin-bottom: 15px; font-size: 0.9rem; }
+        .contact-info i { color: var(--accent-color); font-size: 1.1rem; margin-top: 3px; }
+        
+        .footer-bottom { max-width: 1200px; margin: 0 auto; text-align: center; padding-top: 30px; border-top: 1px solid var(--glass-border); color: #555; font-size: 0.85rem; }
 
-        @keyframes shine {
-            0% { left: -100%; }
-            50% { left: 200%; }
-            100% { left: 200%; }
-        }
-
-        .job-icon {
-            font-size: 1.8rem;
-            color: var(--gold-accent);
-            margin-bottom: 15px;
-            text-shadow: 0 0 15px var(--gold-glow);
-        }
-
-        .job-title {
-            color: #fff;
-            font-weight: 800;
-            text-transform: uppercase;
-            font-size: 1rem;
-            margin-bottom: 10px;
-            letter-spacing: 1px;
-        }
-
-        @media (max-width: 850px) {
+        @media (max-width: 992px) {
             .container { grid-template-columns: 1fr; }
             .sidebar { position: static; margin-bottom: 40px; order: -1; }
+            .instructor-grid { grid-template-columns: 1fr; max-width: 600px; text-align: center; }
+            .instructor-photo { max-width: 300px; margin: 0 auto; }
+            .experience-cards { justify-content: center; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .journey-line { display: none; }
+            .journey-wrapper { flex-direction: column; align-items: center; }
+            .journey-step { display: flex; text-align: left; align-items: center; gap: 20px; width: 100%; max-width: 400px; }
+            .journey-icon { margin: 0; width: 60px; height: 60px; font-size: 1.2rem; flex-shrink: 0; }
+            .footer-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <a href="academy.html" class="logo">
-            <img src="images/aBRcFxAs_400x400.png" alt="Revolt">
+        <a href="index.html" class="logo">
+            <img src="images/aBRcFxAs_400x400.png" alt="" onerror="this.style.display='none'">
             Revolt <span>Academy</span>
         </a>
         <div class="nav-right">
@@ -243,24 +271,72 @@
     </nav>
 
     <header>
-        <h1 class="tr" data-en="3D Environment Art" data-ka="3D გარემოს დიზაინი">3D Environment Art</h1>
-        <p class="subtitle tr" 
+        <h1 class="tr fade-in-up" data-en="3D Environment Art" data-ka="3D გარემოს დიზაინი">3D Environment Art</h1>
+        <p class="subtitle tr fade-in-up" style="transition-delay: 0.1s;"
            data-en="Master Unreal Engine 5, ZBrush, and Gaea to create cinematic game worlds."
            data-ka="დაეუფლეთ Unreal Engine 5-ს, ZBrush-ს და Gaea-ს კინემატოგრაფიული სამყაროების შესაქმნელად.">
             Master Unreal Engine 5, ZBrush, and Gaea to create cinematic game worlds.
         </p>
-
-        <div class="meta-tags">
-            <div class="tag"><i class="fas fa-clock"></i> 12 Months</div>
-            <div class="tag"><i class="fas fa-signal"></i> Beginner to Pro</div>
-            <div class="tag tr" data-en="100% Online" data-ka="100% ონლაინ"><i class="fas fa-globe"></i> 100% Online</div>
+        <div class="meta-tags fade-in-up" style="transition-delay: 0.2s;">
+            <div class="tag"><i class="fas fa-clock"></i> <span class="tr" data-en="12 Months" data-ka="12 თვე">12 Months</span></div>
+            <div class="tag"><i class="fas fa-signal"></i> <span class="tr" data-en="Beginner to Pro" data-ka="დამწყებიდან პროფესიონალამდე">Beginner to Pro</span></div>
+            <div class="tag"><i class="fas fa-globe"></i> <span class="tr" data-en="100% Online" data-ka="100% ონლაინ">100% Online</span></div>
         </div>
     </header>
+
+    <!-- 1. INSTRUCTOR SECTION -->
+    <section class="instructor-section">
+        <div class="instructor-grid fade-in-up">
+            <div class="instructor-photo">
+                
+                <img src="/images/GiotgiChitidze.jpg" alt="Giorgi Chitidze" style="width:100%; height:100%; object-fit:cover; position:absolute; top:0; left:0;"> 
+            </div>
+            <div class="instructor-info">
+                <div class="instructor-title tr" data-en="Course Instructor" data-ka="კურსის ინსტრუქტორი">Course Instructor</div>
+                <h2 class="tr" data-en="Giorgi Chitidze" data-ka="გიორგი ჩიტიძე">Giorgi Chitidze</h2>
+                <p class="instructor-bio tr" data-en="Senior and Lead Environment Artist with professional experience across multiple game studios, including CD PROJEKT RED. Released multiple commercial games and specializes in real-world environment art workflows for Unreal Engine." data-ka="Senior და Lead Environment Artist სხვადასხვა სტუდიაში, მათ შორის CD PROJEKT RED-ში მიღებული პროფესიული გამოცდილებით. მონაწილეობა აქვს მიღებული არაერთი კომერციული თამაშის შექმნაში. კურსი აგებულია იმ სამუშაო პროცესებზე, რომლებიც რეალურ პროექტებში გამოიყენება.">
+                    Senior and Lead Environment Artist with professional experience across multiple game studios, including CD PROJEKT RED. Released multiple commercial games and specializes in real-world environment art workflows for Unreal Engine.
+                </p>
+                
+                <div class="instructor-stats">
+                    <div class="stat-card">
+                        <div class="stat-num">7+</div>
+                        <div class="stat-label tr" data-en="Years Exp." data-ka="წელი გამოცდილება">Years Exp.</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-num">12</div>
+                        <div class="stat-label tr" data-en="Projects" data-ka="პროექტი">Projects</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-num">500+</div>
+                        <div class="stat-label tr" data-en="Students" data-ka="სტუდენტი">Students</div>
+                    </div>
+                </div>
+
+                <div class="experience-cards">
+                    <div class="exp-badge">
+                    <i class="fas fa-briefcase"></i>
+                        Senior Environment Artist
+                    </div>
+
+                <div class="exp-badge">
+                    <i class="fas fa-users"></i>
+                    Lead Environment Artist
+                </div>
+
+                <div class="exp-badge">
+                    <i class="fas fa-gamepad"></i>
+                    Multiple Games Released
+                </div>
+</div>
+            </div>
+        </div>
+    </section>
 
     <div class="container">
         <div class="main-content">
             
-            <div class="content-box">
+            <div class="content-box fade-in-up">
                 <h2 class="tr" data-en="About The Course" data-ka="კურსის შესახებ">About The Course</h2>
                 <p class="tr" data-en="Learn from anywhere in the world. This comprehensive 12-month program is designed to take you from a complete beginner to a job-ready Environment Artist."
                    data-ka="ისწავლეთ ნებისმიერი ადგილიდან. ეს 12-თვიანი პროგრამა შექმნილია დამწყებთათვის, რათა გახდნენ პროფესიონალი გარემოს არტისტები.">
@@ -273,97 +349,245 @@
                 </p>
             </div>
 
-            <!--
-           <div class="carousel-wrapper">
-                <div class="carousel-container">
-                    <div class="slide active" style="background-image: url('images/screenshot1.jpg');"></div>
-                    <div class="slide" style="background-image: url('images/screenshot4.jpg');"></div>
-                    <div class="slide" style="background-image: url('images/screenshot2.jpg');"></div>
-                    <div class="slide" style="background-image: url('images/screenshot3.jpg');"></div>
-                </div>
-                <div class="carousel-dots">
-                    <div class="dot active" onclick="setSlide(0)"></div>
-                    <div class="dot" onclick="setSlide(1)"></div>
-                    <div class="dot" onclick="setSlide(2)"></div>
-                    <div class="dot" onclick="setSlide(3)"></div>
-                </div>
-                <div style="text-align: center; margin-top: 10px; font-size: 0.8rem; color: #888;" class="tr" 
-                     data-en="What you will create during the course" 
-                     data-ka="რას შექმნით კურსის განმავლობაში">
-                    What you will create during the course
+            <!-- 2. STUDENT OUTCOMES -->
+            <div class="content-box fade-in-up">
+                <h2 class="tr" data-en="What You Will Be Able To Create" data-ka="რას შეძლებთ შექმნათ">What You Will Be Able To Create</h2>
+                <div class="outcomes-grid">
+                    <div class="outcome-card">
+                        <i class="fas fa-mountain outcome-icon"></i>
+                        <h3 class="tr" data-en="AAA Environments" data-ka="AAA გარემოები">AAA Environments</h3>
+                        <p class="tr" data-en="Build massive, realistic worlds optimized for modern games." data-ka="შექმენით მასიური, რეალისტური სამყაროები თანამედროვე თამაშებისთვის.">Build massive, realistic worlds optimized for modern games.</p>
+                    </div>
+                    <div class="outcome-card">
+                        <i class="fas fa-cube outcome-icon"></i>
+                        <h3 class="tr" data-en="Modular Assets" data-ka="მოდულური ასეტები">Modular Assets</h3>
+                        <p class="tr" data-en="Design reusable architecture and props for efficient level building." data-ka="დააპროექტეთ მრავალჯერადი არქიტექტურა და ობიექტები.">Design reusable architecture and props for efficient level building.</p>
+                    </div>
+                    <div class="outcome-card">
+                        <i class="fas fa-lightbulb outcome-icon"></i>
+                        <h3 class="tr" data-en="Cinematic Lighting" data-ka="კინემატოგრაფიული განათება">Cinematic Lighting</h3>
+                        <p class="tr" data-en="Master Lumen and Raytracing to evoke mood and atmosphere." data-ka="დაეუფლეთ Lumen-ს და Raytracing-ს ატმოსფეროს შესაქმნელად.">Master Lumen and Raytracing to evoke mood and atmosphere.</p>
+                    </div>
+                    <div class="outcome-card">
+                        <i class="fas fa-palette outcome-icon"></i>
+                        <h3 class="tr" data-en="Advanced Materials" data-ka="რთული მატერიალები">Advanced Materials</h3>
+                        <p class="tr" data-en="Create complex, hyper-realistic textures and shader graphs." data-ka="შექმენით რთული, ჰიპერ-რეალისტური ტექსტურები.">Create complex, hyper-realistic textures and shader graphs.</p>
+                    </div>
                 </div>
             </div>
-            -->
 
-            <div class="content-box">
-                <h2 class="tr" data-en="Curriculum Highlights" data-ka="სასწავლო გეგმა">Curriculum Highlights</h2>
+            <!-- 3. SOFTWARE SECTION -->
+            <div class="content-box fade-in-up">
+                <h2 class="tr" data-en="Industry Standard Tools" data-ka="ინდუსტრიის სტანდარტული პროგრამები">Industry Standard Tools</h2>
+                <div class="software-grid">
+                    <div class="software-card">
+                        <div class="software-logo"><img src="images/SoftLogos/UELogo.png"alt="Unreal Engine 5"style="width:150%;height:100%;object-fit:contain;display:block;user-select:none;pointer-events:none;"></div>
+                        <div class="software-info">
+                            <h4>Unreal Engine 5</h4>
+                            <p class="tr" data-en="Core Engine & Rendering" data-ka="მთავარი ძრავა და რენდერი">Core Engine & Rendering</p>
+                        </div>
+                    </div>
+                    <div class="software-card">
+                        <div class="software-logo"><img src="images/SoftLogos/ZbrushLogo.webp"alt="ZBrush"style="width:150%;height:150%;object-fit:contain;display:block;user-select:none;pointer-events:none;"></div>
+                        <div class="software-info">
+                            <h4>ZBrush</h4>
+                            <p class="tr" data-en="High-Poly Sculpting" data-ka="High-Poly სკულპტინგი">High-Poly Sculpting</p>
+                        </div>
+                    </div>
+                    <div class="software-card">
+                        <div class="software-logo"><img src="images/SoftLogos/3dsLogo.png"alt="3DSMax"style="width:150%;height:120%;object-fit:contain;display:block;user-select:none;pointer-events:none;"></div>
+                        <div class="software-info">
+                            <h4>3ds Max</h4>
+                            <p class="tr" data-en="Modeling & UVs" data-ka="მოდელირება და UV">Modeling & UVs</p>
+                        </div>
+                    </div>
+                    <div class="software-card">
+                        <div class="software-logo"><img src="images/SoftLogos/SPLogo.webp"alt="Substance Painter"style="width:100%;height:100%;object-fit:contain;display:block;user-select:none;pointer-events:none;"></div>
+                        <div class="software-info">
+                            <h4>Substance Painter</h4>
+                            <p class="tr" data-en="PBR Texturing" data-ka="PBR ტექსტურირება">PBR Texturing</p>
+                        </div>
+                    </div>
+                    <div class="software-card">
+                        <div class="software-logo"><img src="images/SoftLogos/STLogo.png"alt="Speed Tree"style="width:100%;height:100%;object-fit:contain;display:block;user-select:none;pointer-events:none;"></div>
+                        <div class="software-info">
+                            <h4>SpeedTree</h4>
+                            <p class="tr" data-en="Custom Foliage" data-ka="მცენარეების შექმნა">Custom Foliage</p>
+                        </div>
+                    </div>
+                    <div class="software-card">
+                        <div class="software-logo"><img src="images/SoftLogos/GaeaLogo.png"alt="Gaea"style="width:100%;height:100%;object-fit:contain;display:block;user-select:none;pointer-events:none;"></div>
+                        <div class="software-info">
+                            <h4>Gaea</h4>
+                            <p class="tr" data-en="Terrain Generation" data-ka="ტერაინის გენერაცია">Terrain Generation</p>
+                        </div>
+                    </div>
+                    <div class="software-card">
+                        <div class="software-logo"><img src="images/SoftLogos/WMLogo.png"alt="World Machine"style="width:150%;height:150%;object-fit:contain;display:block;user-select:none;pointer-events:none;"></div>
+                        <div class="software-info">
+                            <h4>World Machine</h4>
+                            <p class="tr" data-en="Landscape Workflows" data-ka="ლანდშაფტის მუშაობა">Landscape Workflows</p>
+                        </div>
+                    </div>
+                    <div class="software-card">
+                        <div class="software-logo"><img src="images/SoftLogos/PSLogo.webp"alt="Photoshop"style="width:120%;height:100%;object-fit:contain;display:block;user-select:none;pointer-events:none;"></div>
+                        <div class="software-info">
+                            <h4>Photoshop</h4>
+                            <p class="tr" data-en="Texture Adjustments" data-ka="ტექსტურის რედაქტირება">Texture Adjustments</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. 12-MONTH ROADMAP -->
+            <div class="content-box fade-in-up">
+                <h2 class="tr" data-en="12-Month Roadmap" data-ka="12-თვიანი სასწავლო გეგმა">12-Month Roadmap</h2>
                 
-                <div class="module">
-                    <div class="module-header">
-                        <span class="tr" data-en="Phase 1: Foundations & Unreal Basics" data-ka="ფაზა 1: საფუძვლები და Unreal Basics">Phase 1: Foundations & Unreal Basics</span>
-                        <i class="fas fa-chevron-down"></i>
+                <div class="roadmap-timeline">
+                    <!-- Month 1 -->
+                    <div class="roadmap-item">
+                        <span class="roadmap-month tr" data-en="Month 1" data-ka="თვე 1">Month 1</span>
+                        <div class="roadmap-content">
+                            <h3 class="tr" data-en="UE5 Basics & Blockouts" data-ka="UE5 საფუძვლები">UE5 Basics & Blockouts</h3>
+                            <p class="tr" data-en="Master the interface, navigation, and blockout fundamentals." data-ka="დაეუფლეთ ინტერფეისს და ბლოკაუტის საფუძვლებს.">Master the interface, navigation, and blockout fundamentals.</p>
+                            <div class="roadmap-details">
+                                <div class="rd-row"><i class="fas fa-tools"></i> <span><strong class="tr" data-en="Software:" data-ka="პროგრამა:">Software:</strong> Unreal Engine 5</span></div>
+                                <div class="rd-row"><i class="fas fa-tasks"></i> <span><strong class="tr" data-en="Project:" data-ka="პროექტი:">Project:</strong> First Level Blockout</span></div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="module-content tr" 
-                         data-en="Introduction to the Unreal Engine 5 interface. Learning blockouts, modular asset creation, and understanding 3D space." 
-                         data-ka="შესავალი Unreal Engine 5-ში. ბლოკაუტების სწავლა, მოდულური ასეტების შექმნა და 3D სივრცის გაგება.">
-                        Introduction to the Unreal Engine 5 interface. Learning blockouts, modular asset creation, and understanding 3D space.
-                    </div>
-                </div>
 
-                <div class="module">
-                    <div class="module-header">
-                        <span class="tr" data-en="Phase 2: Sculpting with ZBrush" data-ka="ფაზა 2: სკულპტინგი ZBrush-ით">Phase 2: Sculpting with ZBrush</span>
-                        <i class="fas fa-chevron-down"></i>
+                    <!-- Month 2 -->
+                    <div class="roadmap-item">
+                        <span class="roadmap-month tr" data-en="Month 2" data-ka="თვე 2">Month 2</span>
+                        <div class="roadmap-content">
+                            <h3 class="tr" data-en="Modular Assets" data-ka="მოდულური ასეტები">Modular Assets</h3>
+                            <p class="tr" data-en="Learn grid snapping, pivots, and building reusable structural kits." data-ka="ისწავლეთ მრავალჯერადი სტრუქტურული ნაწილების აწყობა.">Learn grid snapping, pivots, and building reusable structural kits.</p>
+                            <div class="roadmap-details">
+                                <div class="rd-row"><i class="fas fa-tools"></i> <span><strong>Software:</strong> 3ds Max / Blender, UE5</span></div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="module-content tr" 
-                         data-en="Dive into organic modeling. Learn digital sculpting techniques in ZBrush to create high-fidelity rocks, ruins, and detailed props." 
-                         data-ka="ორგანული მოდელირება. ციფრული სკულპტინგის ტექნიკები ZBrush-ში მაღალი ხარისხის კლდეებისა და ნანგრევების შესაქმნელად.">
-                        Dive into organic modeling. Learn digital sculpting techniques in ZBrush to create high-fidelity rocks, ruins, and detailed props.
-                    </div>
-                </div>
 
-                <div class="module">
-                    <div class="module-header">
-                        <span class="tr" data-en="Phase 3: Massive Worlds (Gaea/World Machine)" data-ka="ფაზა 3: მასიური სამყაროები (Gaea/World Machine)">Phase 3: Massive Worlds (Gaea/World Machine)</span>
-                        <i class="fas fa-chevron-down"></i>
+                    <!-- Month 3 -->
+                    <div class="roadmap-item">
+                        <span class="roadmap-month tr" data-en="Month 3" data-ka="თვე 3">Month 3</span>
+                        <div class="roadmap-content">
+                            <h3 class="tr" data-en="Environment Art Principles" data-ka="გარემოს დიზაინის პრინციპები">Environment Art Principles</h3>
+                            <p class="tr" data-en="Composition, scale, and storytelling through environment design." data-ka="კომპოზიცია და ამბის თხრობა გარემოს დიზაინით.">Composition, scale, and storytelling through environment design.</p>
+                        </div>
                     </div>
-                    <div class="module-content tr" 
-                         data-en="Procedural terrain generation. Using World Machine and Gaea to create realistic mountains, valleys, and landscapes." 
-                         data-ka="პროცედურული ტერაინები. World Machine-სა და Gaea-ს გამოყენება რეალისტური მთებისა და ლანდშაფტების შესაქმნელად.">
-                        Procedural terrain generation. Using World Machine and Gaea to create realistic mountains, valleys, and landscapes.
-                    </div>
-                </div>
 
-                <div class="module">
-                    <div class="module-header">
-                        <span class="tr" data-en="Phase 4: Foliage & Cinematics" data-ka="ფაზა 4: მცენარეები და სინემატიკა">Phase 4: Foliage & Cinematics</span>
-                        <i class="fas fa-chevron-down"></i>
+                    <!-- Month 4 -->
+                    <div class="roadmap-item">
+                        <span class="roadmap-month tr" data-en="Month 4" data-ka="თვე 4">Month 4</span>
+                        <div class="roadmap-content">
+                            <h3 class="tr" data-en="Master Materials" data-ka="მთავარი მატერიალები">Master Materials</h3>
+                            <p class="tr" data-en="Node-based shader creation, vertex painting, and decals." data-ka="შეიდერების შექმნა, Vertex Painting და Decal-ები.">Node-based shader creation, vertex painting, and decals.</p>
+                        </div>
                     </div>
-                    <div class="module-content tr" 
-                         data-en="Using SpeedTree for custom foliage. Finally, learning lighting, composition, and rendering high-quality cinematics." 
-                         data-ka="SpeedTree-ს გამოყენება მცენარეებისთვის. განათება, კომპოზიცია და მაღალი ხარისხის სინემატიკის რენდერი.">
-                        Using SpeedTree for custom foliage. Finally, learning lighting, composition, and rendering high-quality cinematics.
-                    </div>
-                </div>
 
+                    <!-- Month 5 -->
+                    <div class="roadmap-item">
+                        <span class="roadmap-month tr" data-en="Month 5" data-ka="თვე 5">Month 5</span>
+                        <div class="roadmap-content">
+                            <h3 class="tr" data-en="Landscape & Terrain" data-ka="ლანდშაფტი და ტერაინი">Landscape & Terrain</h3>
+                            <p class="tr" data-en="Using procedural generators for epic background mountains and playable terrain." data-ka="პროცედურული გენერატორების გამოყენება მთებისა და ტერაინისთვის.">Using procedural generators for epic background mountains and playable terrain.</p>
+                            <div class="roadmap-details">
+                                <div class="rd-row"><i class="fas fa-tools"></i> <span><strong>Software:</strong> Gaea / World Machine</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Month 6 -->
+                    <div class="roadmap-item">
+                        <span class="roadmap-month tr" data-en="Month 6" data-ka="თვე 6">Month 6</span>
+                        <div class="roadmap-content">
+                            <h3 class="tr" data-en="Foliage & Nature" data-ka="მცენარეები და ბუნება">Foliage & Nature</h3>
+                            <p class="tr" data-en="Creating and optimizing trees, grass, and scattering logic." data-ka="ხეების და ბალახის შექმნა და ოპტიმიზაცია.">Creating and optimizing trees, grass, and scattering logic.</p>
+                            <div class="roadmap-details">
+                                <div class="rd-row"><i class="fas fa-tools"></i> <span><strong>Software:</strong> SpeedTree</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Month 7 -->
+                    <div class="roadmap-item">
+                        <span class="roadmap-month tr" data-en="Month 7" data-ka="თვე 7">Month 7</span>
+                        <div class="roadmap-content">
+                            <h3 class="tr" data-en="Sculpting in ZBrush" data-ka="სკულპტინგი ZBrush-ში">Sculpting in ZBrush</h3>
+                            <p class="tr" data-en="Organic modeling, rock formations, and adding damage/wear to props." data-ka="ორგანული მოდელირება, კლდეები და დაზიანებების დამატება.">Organic modeling, rock formations, and adding damage/wear to props.</p>
+                        </div>
+                    </div>
+
+                    <!-- Month 8 -->
+                    <div class="roadmap-item">
+                        <span class="roadmap-month tr" data-en="Month 8" data-ka="თვე 8">Month 8</span>
+                        <div class="roadmap-content">
+                            <h3 class="tr" data-en="Substance Painter Texturing" data-ka="ტექსტურირება Substance Painter-ით">Substance Painter Texturing</h3>
+                            <p class="tr" data-en="Baking high to low poly, smart materials, and PBR workflow." data-ka="Baking, ჭკვიანი მატერიალები და PBR სამუშაო პროცესი.">Baking high to low poly, smart materials, and PBR workflow.</p>
+                        </div>
+                    </div>
+
+                    <!-- Month 9 -->
+                    <div class="roadmap-item">
+                        <span class="roadmap-month tr" data-en="Month 9" data-ka="თვე 9">Month 9</span>
+                        <div class="roadmap-content">
+                            <h3 class="tr" data-en="Optimization & Performance" data-ka="ოპტიმიზაცია და პერფორმანსი">Optimization & Performance</h3>
+                            <p class="tr" data-en="LODs, Nanite workflows, profiling, and draw call reduction." data-ka="LOD-ები, Nanite, პროფაილინგი და ოპტიმიზაცია.">LODs, Nanite workflows, profiling, and draw call reduction.</p>
+                        </div>
+                    </div>
+
+                    <!-- Month 10 -->
+                    <div class="roadmap-item">
+                        <span class="roadmap-month tr" data-en="Month 10" data-ka="თვე 10">Month 10</span>
+                        <div class="roadmap-content">
+                            <h3 class="tr" data-en="Lighting & Post-Processing" data-ka="განათება და Post-Processing">Lighting & Post-Processing</h3>
+                            <p class="tr" data-en="Lumen setup, exposure, color grading, and atmospheric fog." data-ka="Lumen-ის გამართვა, ფერების კორექცია და ნისლი.">Lumen setup, exposure, color grading, and atmospheric fog.</p>
+                        </div>
+                    </div>
+
+                    <!-- Month 11 -->
+                    <div class="roadmap-item">
+                        <span class="roadmap-month tr" data-en="Month 11" data-ka="თვე 11">Month 11</span>
+                        <div class="roadmap-content">
+                            <h3 class="tr" data-en="Cinematics & Sequencer" data-ka="სინემატიკა და Sequencer">Cinematics & Sequencer</h3>
+                            <p class="tr" data-en="Camera animation, focus tracking, and rendering high-quality video." data-ka="კამერის ანიმაცია და მაღალი ხარისხის ვიდეოს რენდერი.">Camera animation, focus tracking, and rendering high-quality video.</p>
+                        </div>
+                    </div>
+
+                    <!-- Month 12 -->
+                    <div class="roadmap-item">
+                        <span class="roadmap-month tr" data-en="Month 12" data-ka="თვე 12">Month 12</span>
+                        <div class="roadmap-content" style="border-color: var(--accent-color); background: rgba(138,28,28,0.05);">
+                            <h3 class="tr" data-en="Final Portfolio Project" data-ka="ფინალური პორტფოლიო პროექტი">Final Portfolio Project</h3>
+                            <p class="tr" data-en="Create a complete, stunning environment from scratch for your portfolio." data-ka="შექმენით სრული, შთამბეჭდავი გარემო თქვენი პორტფოლიოსთვის ნულიდან.">Create a complete, stunning environment from scratch for your portfolio.</p>
+                            <div class="roadmap-details">
+                                <div class="rd-row"><i class="fas fa-trophy"></i> <strong class="tr" data-en="Goal: Job-Ready Portfolio Piece" data-ka="მიზანი: დასაქმებისთვის მზა პორტფოლიო">Goal: Job-Ready Portfolio Piece</strong></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
+
         </div>
 
-        <div class="sidebar">
+        <div class="sidebar fade-in-up">
             <div class="enroll-card">
                 <h3 class="tr" data-en="Tuition Fee" data-ka="სწავლის საფასური">Tuition Fee</h3>
-                <div class="price">300 ₾ <span>/ mo</span></div>
+                <div class="price">400 ₾ <span>/ mo</span></div>
                 
                 <div class="special-offer">
                     <div class="offer-badge tr" data-en="FULL COURSE OFFER" data-ka="სრული კურსის შეთავაზება">FULL COURSE OFFER</div>
                     <div>
-                        <span class="old-price">3600 ₾</span>
-                        <span class="new-price">3000 ₾</span>
+                        <span class="old-price">4800 ₾</span>
+                        <span class="new-price">4000 ₾</span>
                     </div>
                     <div style="font-size: 0.75rem; color: #ccc; margin-top: 5px;" class="tr" 
-                         data-en="Pay upfront and save 600 GEL" 
-                         data-ka="გადაიხადე ერთიანად და დაზოგე 600 ლარი">
-                        Pay upfront and save 600 GEL
+                         data-en="Pay upfront and save 800 GEL" 
+                         data-ka="გადაიხადე ერთიანად და დაზოგე 800 ლარი">
+                        Pay upfront and save 800 GEL
                     </div>
                 </div>
                 
@@ -371,7 +595,7 @@
 
                 <div class="info-list">
                     <div class="info-item">
-                        <span class="tr" data-en="Format" data-ka="ფორმატი">Format:</span> Online (Remote)
+                        <span class="tr" data-en="Format" data-ka="ფორმატი">Format:</span> <span class="tr" data-en="Online (Remote)" data-ka="ონლაინ (დისტანციური)">Online (Remote)</span>
                     </div>
                     <div class="info-item">
                         <span class="tr" data-en="Language" data-ka="ენა">Language:</span> 
@@ -379,19 +603,253 @@
                     </div>
                 </div>
             </div>
-
-          <div class="job-highlight">
-                <i class="fas fa-crown job-icon"></i>
-                <div class="job-title tr" data-en="Career Opportunity" data-ka="კარიერული შესაძლებლობა">Career Opportunity</div>
-                <p class="tr" 
-                   data-en="Distinguished graduates may be invited to join the Revolt Entertainment core team to work on future titles." 
-                   data-ka="გამორჩეული კურსდამთავრებულები შეიძლება მოწვეულ იქნან Revolt Entertainment-ის ძირითად გუნდში.">
-                    Distinguished graduates may be invited to join the Revolt Entertainment core team to work on future titles.
-                </p>
-            </div>
-
         </div>
     </div>
+
+    <!-- 5. PORTFOLIO GALLERY -->
+    <section class="alt-bg fade-in-up">
+        <div class="container-fluid">
+            <h2 class="section-title tr" data-en="Gallery <span></span>" data-ka="გალერეა <span></span>">Gallery <span></span></h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="/images/EnvGallery1.jpg" alt="GalleryImage" style="width:100%; height:100%; object-fit:cover; position:absolute; top:0; left:0;"> 
+                    <div class="gallery-overlay"></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="/images/EnvGallery2.jpg" alt="GalleryImage" style="width:100%; height:100%; object-fit:cover; position:absolute; top:0; left:0;"> 
+                    <div class="gallery-overlay"></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="/images/EnvGallery3.jpg" alt="GalleryImage" style="width:100%; height:100%; object-fit:cover; position:absolute; top:0; left:0;"> 
+                    <div class="gallery-overlay"></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="/images/EnvGallery4.jpg" alt="GalleryImage" style="width:100%; height:100%; object-fit:cover; position:absolute; top:0; left:0;"> 
+                    <div class="gallery-overlay"></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="/images/EnvGallery5.jpg" alt="GalleryImage" style="width:100%; height:100%; object-fit:cover; position:absolute; top:0; left:0;"> 
+                    <div class="gallery-overlay"></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="/images/EnvGallery6.jpg" alt="GalleryImage" style="width:100%; height:100%; object-fit:cover; position:absolute; top:0; left:0;"> 
+                    <div class="gallery-overlay"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. WHY REVOLT ACADEMY -->
+    <section class="fade-in-up">
+        <div class="container-fluid">
+            <h2 class="section-title tr" data-en="Why <span>Revolt Academy</span>" data-ka="რატომ <span>Revolt Academy</span>">Why <span>Revolt Academy</span></h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-headset"></i></div>
+                    <h3 class="tr" data-en="Live Lessons" data-ka="ცოცხალი ლექციები">Live Lessons</h3>
+                    <p class="tr" data-en="Real-time interaction with the instructor, not pre-recorded." data-ka="რეალურ დროში ინტერაქცია ინსტრუქტორთან.">Real-time interaction with the instructor, not pre-recorded.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-comments"></i></div>
+                    <h3 class="tr" data-en="Personal Feedback" data-ka="პირადი უკუკავშირი">Personal Feedback</h3>
+                    <p class="tr" data-en="Detailed reviews on your assignments and portfolio pieces." data-ka="დეტალური განხილვა თქვენს დავალებებზე.">Detailed reviews on your assignments and portfolio pieces.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fab fa-discord"></i></div>
+                    <h3 class="tr" data-en="Discord Community" data-ka="Discord საზოგადოება">Discord Community</h3>
+                    <p class="tr" data-en="24/7 access to our private hub to share work and get help." data-ka="24/7 წვდომა ჩვენს პირად ჰაბზე დახმარებისთვის.">24/7 access to our private hub to share work and get help.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-briefcase"></i></div>
+                    <h3 class="tr" data-en="Industry Workflow" data-ka="ინდუსტრიული პროცესი">Industry Workflow</h3>
+                    <p class="tr" data-en="Learn exactly how games are made in professional AAA studios." data-ka="ისწავლეთ ზუსტად როგორ იქმნება თამაშები AAA სტუდიებში.">Learn exactly how games are made in professional AAA studios.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-users"></i></div>
+                    <h3 class="tr" data-en="Small Groups" data-ka="მცირე ჯგუფები">Small Groups</h3>
+                    <p class="tr" data-en="Limited seats ensure everyone gets the attention they need." data-ka="შეზღუდული ადგილები უზრუნველყოფს ყურადღებას.">Limited seats ensure everyone gets the attention they need.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-map-signs"></i></div>
+                    <h3 class="tr" data-en="Career Guidance" data-ka="კარიერული გზამკვლევი">Career Guidance</h3>
+                    <p class="tr" data-en="Resume prep, portfolio review, and job application strategies." data-ka="რეზიუმეს მომზადება და დასაქმების სტრატეგიები.">Resume prep, portfolio review, and job application strategies.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. STUDENT JOURNEY -->
+    <section class="alt-bg fade-in-up">
+        <div class="container-fluid">
+            <h2 class="section-title tr" data-en="Your <span>Journey</span>" data-ka="თქვენი <span>მოგზაურობა</span>">Your <span>Journey</span></h2>
+            <div class="journey-wrapper">
+                <div class="journey-line"></div>
+                <div class="journey-step">
+                    <div class="journey-icon"><i class="fas fa-user-plus"></i></div>
+                    <h4 class="tr" data-en="Register" data-ka="რეგისტრაცია">Register</h4>
+                    <p class="tr" data-en="Secure your spot" data-ka="დაჯავშნე ადგილი">Secure your spot</p>
+                </div>
+                <div class="journey-step">
+                    <div class="journey-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <h4 class="tr" data-en="Learn" data-ka="სწავლა">Learn</h4>
+                    <p class="tr" data-en="Attend live sessions" data-ka="დაესწარი ლექციებს">Attend live sessions</p>
+                </div>
+                <div class="journey-step">
+                    <div class="journey-icon"><i class="fas fa-laptop-code"></i></div>
+                    <h4 class="tr" data-en="Homework" data-ka="დავალება">Homework</h4>
+                    <p class="tr" data-en="Apply the skills" data-ka="გამოიყენე ცოდნა">Apply the skills</p>
+                </div>
+                <div class="journey-step">
+                    <div class="journey-icon"><i class="fas fa-search"></i></div>
+                    <h4 class="tr" data-en="Feedback" data-ka="უკუკავშირი">Feedback</h4>
+                    <p class="tr" data-en="Improve your work" data-ka="გააუმჯობესე ნამუშევარი">Improve your work</p>
+                </div>
+                <div class="journey-step">
+                    <div class="journey-icon"><i class="fas fa-images"></i></div>
+                    <h4 class="tr" data-en="Portfolio" data-ka="პორტფოლიო">Portfolio</h4>
+                    <p class="tr" data-en="Build your scene" data-ka="შექმენი სცენა">Build your scene</p>
+                </div>
+                <div class="journey-step">
+                    <div class="journey-icon" style="border-color: var(--accent-color); color: var(--accent-color);"><i class="fas fa-rocket"></i></div>
+                    <h4 class="tr" data-en="Graduation" data-ka="დამთავრება">Graduation</h4>
+                    <p class="tr" data-en="Ready for the industry" data-ka="მზად ხარ ინდუსტრიისთვის">Ready for the industry</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. FAQ -->
+    <section class="alt-bg fade-in-up">
+        <div class="container-fluid">
+            <h2 class="section-title tr" data-en="Frequently Asked <span>Questions</span>" data-ka="ხშირად დასმული <span>კითხვები</span>">Frequently Asked <span>Questions</span></h2>
+            <div class="faq-container">
+                
+                <div class="faq-item">
+                    <div class="faq-header">
+                        <span class="tr" data-en="Do I need prior experience?" data-ka="მჭირდება თუ არა გამოცდილება?">Do I need prior experience?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-content">
+                        <p class="tr" data-en="No, the course is designed for absolute beginners. We cover everything from the very basics." data-ka="არა, კურსი გათვლილია დამწყებთათვის. ჩვენ ვიწყებთ საფუძვლებიდან.">No, the course is designed for absolute beginners. We cover everything from the very basics.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-header">
+                        <span class="tr" data-en="What PC specs do I need?" data-ka="რა მონაცემების კომპიუტერი მჭირდება?">What PC specs do I need?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-content">
+                        <p class="tr" data-en="Unreal Engine 5 requires a decent PC. We recommend at least an RTX 2060 (or equivalent), 32GB RAM, and a modern quad-core CPU." data-ka="UE5 მოითხოვს კარგ კომპიუტერს. სასურველია RTX 2060, 32GB RAM და თანამედროვე პროცესორი.">Unreal Engine 5 requires a decent PC. We recommend at least an RTX 2060 (or equivalent), 32GB RAM, and a modern quad-core CPU.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-header">
+                        <span class="tr" data-en="Will classes be recorded?" data-ka="ჩაიწერება თუ არა ლექციები?">Will classes be recorded?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-content">
+                        <p class="tr" data-en="Yes, all live sessions are recorded and provided to students to review at their own pace." data-ka="დიახ, ყველა ცოცხალი ლექცია იწერება და ხელმისაწვდომია სტუდენტებისთვის.">Yes, all live sessions are recorded and provided to students to review at their own pace.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-header">
+                        <span class="tr" data-en="How much homework is there?" data-ka="რამდენი დავალება მექნება?">How much homework is there?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-content">
+                        <p class="tr" data-en="Expect to spend around 10-15 hours per week on practical assignments outside of class hours." data-ka="დავალებებისთვის კვირაში დაგჭირდებათ დაახლოებით 10-15 საათი.">Expect to spend around 10-15 hours per week on practical assignments outside of class hours.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-header">
+                        <span class="tr" data-en="Are there certificates?" data-ka="გაიცემა თუ არა სერტიფიკატი?">Are there certificates?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-content">
+                        <p class="tr" data-en="Yes, upon successful completion and final portfolio review, you will receive a Revolt Academy certificate." data-ka="დიახ, კურსის წარმატებით დასრულების შემდეგ გადმოგეცემათ სერტიფიკატი.">Yes, upon successful completion and final portfolio review, you will receive a Revolt Academy certificate.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-header">
+                        <span class="tr" data-en="Is there Discord support?" data-ka="არის თუ არა Discord მხარდაჭერა?">Is there Discord support?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-content">
+                        <p class="tr" data-en="Absolutely. You get access to a private Discord channel to ask questions, share progress, and network." data-ka="რა თქმა უნდა. გექნებათ წვდომა დახურულ Discord არხზე კითხვებისა და დახმარებისთვის.">Absolutely. You get access to a private Discord channel to ask questions, share progress, and network.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-header">
+                        <span class="tr" data-en="Can I get a job afterwards?" data-ka="შევძლებ თუ არა დასაქმებას?">Can I get a job afterwards?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-content">
+                        <p class="tr" data-en="The course is designed to get your portfolio to industry standards. Top graduates may also get offers to join Revolt Entertainment." data-ka="კურსის მიზანია პორტფოლიოს ინდუსტრიის სტანდარტებამდე მიყვანა. საუკეთესოები შეიძლება დასაქმდნენ Revolt Entertainment-ში.">The course is designed to get your portfolio to industry standards. Top graduates may also get offers to join Revolt Entertainment.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. BETTER FOOTER -->
+   <footer>
+        <div class="footer-grid">
+            <div class="footer-about">
+                <a href="#" class="logo">
+                    <img src="images/aBRcFxAs_400x400.png" alt="" onerror="this.style.display='none'">
+                    Revolt <span>Academy</span>
+                </a>
+                <p class="tr" data-en="Georgian game development studio and academy focused on real-world Unreal Engine production, environment art, and professional game development workflows." data-ka="ქართული თამაშების დეველოპერული სტუდია და აკადემია, რომელიც Unreal Engine-ის პრაქტიკულ სამუშაო პროცესებსა და გარემოს დიზაინს ასწავლის.">
+                    Georgian game development studio and academy focused on real-world Unreal Engine production, environment art, and professional game development workflows.
+                </p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/RevoltEntertainment"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://discord.gg/bzFjSYnuD"><i class="fab fa-discord"></i></a>
+                    <a href="https://www.youtube.com/@revoltentertainment4444"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.instagram.com/revolt_entertainment_llc/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@revolt.entertainm8"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-col">
+                <h4 class="tr" data-en="Quick Links" data-ka="სწრაფი ბმულები">Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html" class="tr" data-en="Home" data-ka="მთავარი">Home</a></li>
+                    <li><a href="academy.html" class="tr" data-en="Courses" data-ka="კურსები">Courses</a></li>
+                    <li><a href="index.html" class="tr" data-en="Our Games" data-ka="ჩვენი თამაშები">Our Games</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h4 class="tr" data-en="Academy" data-ka="აკადემია">Academy</h4>
+                <ul class="footer-links">
+                    <li><a href="apply.html" class="tr" data-en="Enroll Now" data-ka="რეგისტრაცია">Enroll Now</a></li>
+                    <li><a href="3denv.html" class="tr" data-en="3D Environment Art" data-ka="3D გარემოს დიზაინი">3D Environment Art</a></li>
+                    <li><a href="3dart.html" class="tr" data-en="3D Art" data-ka="3D არტი">3D Art</a></li>
+                    <li><a href="graphicdesign.html" class="tr" data-en="Graphic Design" data-ka="გრაფიკული დიზაინი">Graphic Design</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h4 class="tr" data-en="Contact" data-ka="კონტაქტი">Contact</h4>
+                <ul class="contact-info footer-links">
+                    <li><i class="fas fa-envelope"></i> <span>entertainmentrevolt@gmail.com</span></li>
+                    <li><i class="fas fa-map-marker-alt"></i> <span class="tr" data-en="Tbilisi, Georgia" data-ka="თბილისი, საქართველო">Tbilisi, Georgia</span></li>
+                    <li><i class="fas fa-phone-alt"></i> <span>+995 595 19 88 39</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Revolt Entertainment. All rights reserved.</p>
+        </div>
+    </footer>
 
     <script>
         // --- TRANSLATION LOGIC ---
@@ -401,60 +859,63 @@
             
             document.querySelectorAll('.tr').forEach(el => {
                 const text = el.getAttribute(`data-${currentLang}`);
-                if (text) el.innerText = text;
+                if (text) {
+                    if(el.tagName === 'STRONG' || el.tagName === 'SPAN') {
+                        el.innerHTML = text; // allow spans inside
+                    } else if (el.innerHTML.includes('<span>') || el.innerHTML.includes('<strong>') || el.innerHTML.includes('<i')) {
+                        // For complex elements, we only replace text nodes to preserve icons/spans if structure allows.
+                        // Since we formatted HTML safely, innerHTML replacement is fine for most.
+                        el.innerHTML = text;
+                    } else {
+                        el.innerText = text;
+                    }
+                }
             });
 
             btn.innerText = (currentLang === "ka") ? "EN" : "KA";
             localStorage.setItem('selected-lang', currentLang);
         }
 
-        // --- CAROUSEL LOGIC ---
-        let slideIndex = 0;
-        const slides = document.querySelectorAll('.slide');
-        const dots = document.querySelectorAll('.dot');
-
-        function showSlides() {
-            slides.forEach(slide => slide.classList.remove('active'));
-            dots.forEach(dot => dot.classList.remove('active'));
-            
-            slideIndex++;
-            if (slideIndex > slides.length) { slideIndex = 1 }
-            
-            slides[slideIndex - 1].classList.add('active');
-            dots[slideIndex - 1].classList.add('active');
-            setTimeout(showSlides, 4000); // Change image every 4 seconds
-        }
-
-        function setSlide(n) {
-            slideIndex = n; 
-            slides.forEach(slide => slide.classList.remove('active'));
-            dots.forEach(dot => dot.classList.remove('active'));
-            slides[n].classList.add('active');
-            dots[n].classList.add('active');
-        }
-
-        // --- ACCORDION LOGIC ---
-        document.querySelectorAll('.module-header').forEach(header => {
+        // --- FAQ ACCORDION LOGIC ---
+        document.querySelectorAll('.faq-header').forEach(header => {
             header.addEventListener('click', () => {
-                const content = header.nextElementSibling;
-                if (content.style.display === "block") {
-                    content.style.display = "none";
-                    header.querySelector('i').classList.replace('fa-chevron-up', 'fa-chevron-down');
-                } else {
-                    content.style.display = "block";
-                    header.querySelector('i').classList.replace('fa-chevron-down', 'fa-chevron-up');
-                }
+                const parent = header.parentElement;
+                // Close others
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    if(item !== parent) item.classList.remove('active');
+                });
+                // Toggle current
+                parent.classList.toggle('active');
             });
         });
 
+        // --- SCROLL ANIMATION OBSERVER ---
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    // Optional: Stop observing once visible
+                    // observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
         // Init
-        document.querySelectorAll('.module-content').forEach(c => c.style.display = 'none');
         window.addEventListener('DOMContentLoaded', () => {
             const savedLang = localStorage.getItem('selected-lang');
             if (savedLang === 'ka') {
                 toggleLanguage();
             }
-            showSlides();
+
+            // Attach observer to elements
+            document.querySelectorAll('.fade-in-up').forEach(el => {
+                observer.observe(el);
+            });
         });
     </script>
 </body>

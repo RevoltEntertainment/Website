@@ -6,7 +6,7 @@
     
     <title>Revolt Academy | Game Development Courses in Tbilisi</title>
     <meta name="description" content="Master Game Development with Revolt Academy. Professional courses in Unreal Engine 5, C++ Programming, 3D Environment Art, and Animation in Tbilisi, Georgia.">
-    <meta name="keywords" content="Game Dev Academy, Learn Unreal Engine Georgia, C++ Course Tbilisi, 3D Animation Course, Game Design School, Revolt Academy">
+    <meta name="keywords" content="Game Dev Academy, Learn Unreal Engine Georgia, C++ Course Tbilisi, 3D Graphic Design, Game Design School, Revolt Academy">
     
     <meta property="og:title" content="Revolt Academy | Shape the Future of Gaming">
     <meta property="og:description" content="Learn from industry veterans who worked on Witcher 4 and Tomb Raider. Enrolling now for UE5 and Animation courses.">
@@ -252,7 +252,24 @@
         }
         .btn:hover { background-position: 100%; box-shadow: 0 0 20px var(--accent-glow); border-color: var(--accent-color); }
 
-        footer { background: #000; padding: 40px 20px; text-align: center; border-top: 1px solid #111; font-size: 0.8rem; color: #555; margin-top: auto; }
+        footer { background: #000; border-top: 1px solid var(--glass-border); padding: 80px 20px 40px; }
+        .footer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 60px; }
+        .footer-about .logo { margin-bottom: 20px; display: inline-flex; }
+        .footer-about p { color: #888; font-size: 0.9rem; max-width: 300px; margin-bottom: 20px; }
+        .social-links { display: flex; gap: 15px; }
+        .social-links a { width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; color: #fff; text-decoration: none; transition: 0.3s; }
+        .social-links a:hover { background: var(--accent-color); transform: translateY(-3px); }
+        
+        .footer-col h4 { color: #fff; font-size: 1.1rem; text-transform: uppercase; margin-bottom: 25px; letter-spacing: 1px; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: #888; text-decoration: none; transition: 0.3s; font-size: 0.9rem; }
+        .footer-links a:hover { color: var(--accent-color); padding-left: 5px; }
+        
+        .contact-info li { display: flex; gap: 15px; color: #888; margin-bottom: 15px; font-size: 0.9rem; }
+        .contact-info i { color: var(--accent-color); font-size: 1.1rem; margin-top: 3px; }
+        
+        .footer-bottom { max-width: 1200px; margin: 0 auto; text-align: center; padding-top: 30px; border-top: 1px solid var(--glass-border); color: #555; font-size: 0.85rem; }
     </style>
 </head>
 <body>
@@ -309,18 +326,18 @@
                         <span class="tr" data-en="Career Outlook: Very High" data-ka="დასაქმების პერსპექტივა: ძალიან მაღალი">Career Outlook: Very High</span>
                     </div>
                     <div class="duration tr" data-en="12 Month Program" data-ka="12 თვიანი პროგრამა">12 Month Program</div>
-                    <div class="price-tag">300 ₾ <span class="tr" data-en="/ month" data-ka="/ თვე">/ month</span></div>
+                    <div class="price-tag">400 ₾ <span class="tr" data-en="/ month" data-ka="/ თვე">/ month</span></div>
                     <a href="3denv.html" class="btn tr" data-en="Learn More" data-ka="გაიგე მეტი">Learn More</a>
                 </div>
             </div>
 
             <div class="course-card">
                 <div>
-                    <i class="fas fa-terminal icon-box"></i>
-                    <h3 class="tr" data-en="Gameplay Programming" data-ka="გეიმფლეი პროგრამირება">Gameplay Programming</h3>
-                    <p class="tr" data-en="Deep dive into C++ and Blueprints. Architect responsive combat, AI systems, and game logic."
-                       data-ka="შეისწავლეთ C++ და Blueprints სიღრმისეულად. ააწყვეთ საბრძოლო სისტემები, AI და თამაშის ლოგიკა.">
-                        Deep dive into C++ and Blueprints. Architect responsive combat, AI systems, and game logic.
+                    <i class="fas fa-cube icon-box"></i>
+                    <h3 class="tr" data-en="3D Art" data-ka="3D არტი">3D Art</h3>
+                    <p class="tr" data-en="Master professional 3D modeling, sculpting, UV mapping, baking and texturing for modern game production."
+                       data-ka="ისწავლეთ პროფესიონალური მოდელირება, სკულპტინგი, UV Mapping, Baking და ტექსტურირება თანამედროვე თამაშებისთვის.">
+                        Master professional 3D modeling, sculpting, UV mapping, baking and texturing for modern game production.
                     </p>
                 </div>
                 <div>
@@ -328,13 +345,33 @@
                         <i class="fas fa-briefcase"></i>
                         <span class="tr" data-en="Career Outlook: High Demand" data-ka="დასაქმების პერსპექტივა: მაღალი მოთხოვნა">Career Outlook: High Demand</span>
                     </div>
-                    <div class="duration tr" data-en="12 Month Program" data-ka="12 თვიანი პროგრამა">12 Month Program</div>
-                    <div class="price-tag">300 ₾ <span class="tr" data-en="/ month" data-ka="/ თვე">/ month</span></div>
-                    <a href="gameplay.html" class="btn tr" data-en="Learn More" data-ka="გაიგე მეტი">Learn More</a>
+                    <div class="duration tr" data-en="6 Month Program" data-ka="6 თვიანი პროგრამა">6 Month Program</div>
+                    <div class="price-tag">400 ₾ <span class="tr" data-en="/ month" data-ka="/ თვე">/ month</span></div>
+                    <a href="3dart.html" class="btn tr" data-en="Learn More" data-ka="გაიგე მეტი">Learn More</a>
                 </div>
             </div>
 
             <div class="course-card">
+                <div>
+                    <i class="fas fa-pen-ruler icon-box"></i>
+                    <h3 class="tr" data-en="Graphic Design" data-ka="გრაფიკული დიზაინი">Graphic Design</h3>
+                    <p class="tr" data-en="Learn branding, typography, layout, social media and marketing design using industry-standard tools."
+                       data-ka="ისწავლეთ ბრენდინგი, ტიპოგრაფია, კომპოზიცია, სოციალური მედიისა და მარკეტინგული დიზაინი.">
+                        Learn branding, typography, layout, social media and marketing design using industry-standard tools.
+                    </p>
+                </div>
+                <div>
+                    <div class="career-badge">
+                        <i class="fas fa-film"></i>
+                        <span class="tr" data-en="Career Outlook: Growing" data-ka="დასაქმების პერსპექტივა: მზარდი">Career Outlook: Growing</span>
+                    </div>
+                    <div class="duration tr" data-en="6 Month Program" data-ka="6 თვიანი პროგრამა">6 Month Program</div>
+                    <div class="price-tag">400 ₾ <span class="tr" data-en="/ month" data-ka="/ თვე">/ month</span></div>
+                    <a href="graphicdesign.html" class="btn tr" data-en="Learn More" data-ka="გაიგე მეტი">Learn More</a>
+                </div>
+            </div>
+            
+                        <div class="course-card">
                 <div>
                     <i class="fas fa-person-walking-arrow-right icon-box"></i>
                     <h3 class="tr" data-en="Animation Course" data-ka="ანიმაციის კურსი">Animation Course</h3>
@@ -349,8 +386,8 @@
                         <span class="tr" data-en="Career Outlook: Growing" data-ka="დასაქმების პერსპექტივა: მზარდი">Career Outlook: Growing</span>
                     </div>
                     <div class="duration tr" data-en="12 Month Program" data-ka="12 თვიანი პროგრამა">12 Month Program</div>
-                    <div class="price-tag">300 ₾ <span class="tr" data-en="/ month" data-ka="/ თვე">/ month</span></div>
-                    <a href="animation.html" class="btn tr" data-en="Learn More" data-ka="გაიგე მეტი">Learn More</a>
+                    <div class="price-tag">400 ₾ <span class="tr" data-en="/ month" data-ka="/ თვე">/ month</span></div>
+                    <a href="" class="btn tr" data-en="Coming Soon" data-ka="მალე">Coming Soon</a>
                 </div>
             </div>
 
@@ -358,7 +395,55 @@
     </div>
 
     <footer>
-        <p>REVOLT ACADEMY &copy; 2025 | TBILISI, GEORGIA</p>
+        <div class="footer-grid">
+            <div class="footer-about">
+                <a href="#" class="logo">
+                    <img src="images/aBRcFxAs_400x400.png" alt="" onerror="this.style.display='none'">
+                    Revolt <span>Academy</span>
+                </a>
+                <p class="tr" data-en="Georgian game development studio and academy focused on real-world Unreal Engine production, environment art, and professional game development workflows." data-ka="ქართული თამაშების დეველოპერული სტუდია და აკადემია, რომელიც Unreal Engine-ის პრაქტიკულ სამუშაო პროცესებსა და გარემოს დიზაინს ასწავლის.">
+                    Georgian game development studio and academy focused on real-world Unreal Engine production, environment art, and professional game development workflows.
+                </p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/RevoltEntertainment"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://discord.gg/bzFjSYnuD"><i class="fab fa-discord"></i></a>
+                    <a href="https://www.youtube.com/@revoltentertainment4444"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.instagram.com/revolt_entertainment_llc/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@revolt.entertainm8"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-col">
+                <h4 class="tr" data-en="Quick Links" data-ka="სწრაფი ბმულები">Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html" class="tr" data-en="Home" data-ka="მთავარი">Home</a></li>
+                    <li><a href="academy.html" class="tr" data-en="Courses" data-ka="კურსები">Courses</a></li>
+                    <li><a href="index.html" class="tr" data-en="Our Games" data-ka="ჩვენი თამაშები">Our Games</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h4 class="tr" data-en="Academy" data-ka="აკადემია">Academy</h4>
+                <ul class="footer-links">
+                    <li><a href="apply.html" class="tr" data-en="Enroll Now" data-ka="რეგისტრაცია">Enroll Now</a></li>
+                    <li><a href="3denv.html" class="tr" data-en="3D Environment Art" data-ka="3D გარემოს დიზაინი">3D Environment Art</a></li>
+                    <li><a href="3dart.html" class="tr" data-en="3D Art" data-ka="3D არტი">3D Art</a></li>
+                    <li><a href="graphicdesign.html" class="tr" data-en="Graphic Design" data-ka="გრაფიკული დიზაინი">Graphic Design</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h4 class="tr" data-en="Contact" data-ka="კონტაქტი">Contact</h4>
+                <ul class="contact-info footer-links">
+                    <li><i class="fas fa-envelope"></i> <span>entertainmentrevolt@gmail.com</span></li>
+                    <li><i class="fas fa-map-marker-alt"></i> <span class="tr" data-en="Tbilisi, Georgia" data-ka="თბილისი, საქართველო">Tbilisi, Georgia</span></li>
+                    <li><i class="fas fa-phone-alt"></i> <span>+995 595 19 88 39</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Revolt Entertainment. All rights reserved.</p>
+        </div>
     </footer>
 
     <script>

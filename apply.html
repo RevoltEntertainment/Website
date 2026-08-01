@@ -106,7 +106,25 @@
         }
         .submit-btn:hover { background: #6b1515; transform: scale(1.01); }
 
-        footer { margin-top: auto; background: #000; padding: 40px; text-align: center; border-top: 1px solid #111; font-size: 0.7rem; color: #444; letter-spacing: 1px; }
+         footer { background: #000; border-top: 1px solid var(--glass-border); padding: 80px 20px 40px; }
+        .footer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 60px; }
+        .footer-about .logo { margin-bottom: 20px; display: inline-flex; }
+        .footer-about p { color: #888; font-size: 0.9rem; max-width: 300px; margin-bottom: 20px; }
+        .social-links { display: flex; gap: 15px; }
+        .social-links a { width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; color: #fff; text-decoration: none; transition: 0.3s; }
+        .social-links a:hover { background: var(--accent-color); transform: translateY(-3px); }
+        
+        .footer-col h4 { color: #fff; font-size: 1.1rem; text-transform: uppercase; margin-bottom: 25px; letter-spacing: 1px; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: #888; text-decoration: none; transition: 0.3s; font-size: 0.9rem; }
+        .footer-links a:hover { color: var(--accent-color); padding-left: 5px; }
+        
+        .contact-info li { display: flex; gap: 15px; color: #888; margin-bottom: 15px; font-size: 0.9rem; }
+        .contact-info i { color: var(--accent-color); font-size: 1.1rem; margin-top: 3px; }
+        
+        .footer-bottom { max-width: 1200px; margin: 0 auto; text-align: center; padding-top: 30px; border-top: 1px solid var(--glass-border); color: #555; font-size: 0.85rem; }
+
     </style>
 </head>
 <body>
@@ -132,9 +150,9 @@
                 <label class="tr" data-en="Selected Discipline" data-ka="არჩეული მიმართულება">Selected Discipline</label>
                 <select name="Course_Type" class="form-control" required>
                     <option value="" disabled selected class="tr" data-en="Select your course" data-ka="აირჩიეთ კურსი">Select your course</option>
-                    <option value="3D Environment Art" class="tr" data-en="3D Environment Art (300 GEL/mo)" data-ka="3D გარემოს დიზაინი (300 ₾/თვე)">3D Environment Art (300 GEL/mo)</option>
-                    <option value="Gameplay Programming" class="tr" data-en="Gameplay Programming (300 GEL/mo)" data-ka="გეიმფლეი პროგრამირება (300 ₾/თვე)">Gameplay Programming (300 GEL/mo)</option>
-                    <option value="Animation" class="tr" data-en="Animation Course (300 GEL/mo)" data-ka="ანიმაციის კურსი (300 ₾/თვე)">Animation Course (300 GEL/mo)</option>
+                    <option value="3D Environment Art" class="tr" data-en="3D Environment Art (400 GEL/mo)" data-ka="3D გარემოს დიზაინი (400 ₾/თვე)">3D Environment Art (400 GEL/mo)</option>
+                    <option value="3D Art" class="tr" data-en="3D Art (400 GEL/mo)" data-ka="3D არტი (400 ₾/თვე)">3D Art (400 GEL/mo)</option>
+                    <option value="Graphic Design" class="tr" data-en="Graphic Design (400 GEL/mo)" data-ka="გრაფიკული დიზაინი (400 ₾/თვე)">Graphic Design (400 GEL/mo)</option>
                 </select>
             </div>
 
@@ -177,7 +195,55 @@
     </div>
 
     <footer>
-        REVOLT ENTERTAINMENT &copy; 2025 | TBILISI, GEORGIA
+        <div class="footer-grid">
+            <div class="footer-about">
+                <a href="#" class="logo">
+                    <img src="images/aBRcFxAs_400x400.png" alt="" onerror="this.style.display='none'">
+                    Revolt <span>Academy</span>
+                </a>
+                <p class="tr" data-en="Georgian game development studio and academy focused on real-world Unreal Engine production, environment art, and professional game development workflows." data-ka="ქართული თამაშების დეველოპერული სტუდია და აკადემია, რომელიც Unreal Engine-ის პრაქტიკულ სამუშაო პროცესებსა და გარემოს დიზაინს ასწავლის.">
+                    Georgian game development studio and academy focused on real-world Unreal Engine production, environment art, and professional game development workflows.
+                </p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/RevoltEntertainment"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://discord.gg/bzFjSYnuD"><i class="fab fa-discord"></i></a>
+                    <a href="https://www.youtube.com/@revoltentertainment4444"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.instagram.com/revolt_entertainment_llc/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@revolt.entertainm8"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-col">
+                <h4 class="tr" data-en="Quick Links" data-ka="სწრაფი ბმულები">Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html" class="tr" data-en="Home" data-ka="მთავარი">Home</a></li>
+                    <li><a href="academy.html" class="tr" data-en="Courses" data-ka="კურსები">Courses</a></li>
+                    <li><a href="index.html" class="tr" data-en="Our Games" data-ka="ჩვენი თამაშები">Our Games</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h4 class="tr" data-en="Academy" data-ka="აკადემია">Academy</h4>
+                <ul class="footer-links">
+                    <li><a href="apply.html" class="tr" data-en="Enroll Now" data-ka="რეგისტრაცია">Enroll Now</a></li>
+                    <li><a href="3denv.html" class="tr" data-en="3D Environment Art" data-ka="3D გარემოს დიზაინი">3D Environment Art</a></li>
+                    <li><a href="3dart.html" class="tr" data-en="3D Art" data-ka="3D არტი">3D Art</a></li>
+                    <li><a href="graphicdesign.html" class="tr" data-en="Graphic Design" data-ka="გრაფიკული დიზაინი">Graphic Design</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h4 class="tr" data-en="Contact" data-ka="კონტაქტი">Contact</h4>
+                <ul class="contact-info footer-links">
+                    <li><i class="fas fa-envelope"></i> <span>entertainmentrevolt@gmail.com</span></li>
+                    <li><i class="fas fa-map-marker-alt"></i> <span class="tr" data-en="Tbilisi, Georgia" data-ka="თბილისი, საქართველო">Tbilisi, Georgia</span></li>
+                    <li><i class="fas fa-phone-alt"></i> <span>+995 595 19 88 39</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Revolt Entertainment. All rights reserved.</p>
+        </div>
     </footer>
 
     <script>
